@@ -1,0 +1,6 @@
+# Hugo workfiles and public folder
+.hugo_build.lock
+public
+
+# Mac OS files
+.DS_Store
