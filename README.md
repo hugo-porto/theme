@@ -1,5 +1,7 @@
 # theme
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/de8777e0fd0249d480a92da2dda5863d)](https://app.codacy.com/gh/hugo-porto/theme/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 Hugo Porto is a personal portfolio theme for Hugo. It features a minimalist design that focuses on showcasing your
 projects and achievements. This theme is perfect for developers, designers, and creatives who want to create a simple
 yet powerful online portfolio.
