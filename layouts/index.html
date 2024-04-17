@@ -1,26 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ .Site.Language.Lang }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
 
-<head>
-  {{ partial "head.html" . }}
-</head>
+  <body class="bg-gray-100">
+    {{ partial "navbar.html" . }}
 
-<body class="bg-gray-100">
-  {{ partial "navbar.html" . }}
+    {{ $sections:= site.Data.sections }}
+    {{ if $sections }}
+      {{ range sort $sections "section.weight" }}
+        {{ if .section.enabled }}
+          {{ partial (printf "sections/%s.html" (replace (lower .section.id) " " "-")) . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
 
-  {{ partial "sections/hero.html" . }}
-  {{ partial "sections/skills.html" . }}
-  {{ partial "sections/portfolio.html" . }}
-  {{ partial "sections/education.html" . }}
-  {{ partial "sections/experience.html" . }}
-  {{ partial "sections/brands.html" . }}
-  {{ partial "sections/testimonial.html" . }}
+    {{ partial "footer.html" . }}
 
-  {{ partial "footer.html" . }}
-
-  <script>
-    feather.replace();
-  </script>
-</body>
-
+    <script>
+      feather.replace();
+    </script>
+  </body>
 </html>

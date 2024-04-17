@@ -1,0 +1,72 @@
+{{ $avatarPath := "images/default-avatar.png" }}
+{{ if .params.avatar }}{{ $avatarPath = .params.avatar }}{{ end }}
+{{ $avatar := (resources.Get $avatarPath).Resize "262x262" }}
+
+{{ $title := "Kate Wolff" }}
+{{ if .params.title }}
+  {{ $title = .params.title }}
+{{ end }}
+
+{{ $subtitle := "Senior Backend Developer" }}
+{{ if .params.subtitle }}
+  {{ $subtitle = .params.subtitle }}
+{{ end }}
+
+{{ $description := "I have a passion for software. I enjoy creating tools that make life easier for people." }}
+{{ if .params.description }}
+  {{ $description = .params.description }}
+{{ end }}
+
+{{ $hireMeButtonEnabled := false }}
+{{ if .params.hireMeButton.enabled }}
+  {{ $hireMeButtonEnabled = true }}
+{{ end }}
+
+{{ $hireMeButtonText := "Hire me" }}
+{{ if .params.hireMeButton.text }}
+  {{ $hireMeButtonText = .params.hireMeButton.text }}
+{{ end }}
+
+{{ $hireMeButtonLink := "#" }}
+{{ if .params.hireMeButton.link }}
+  {{ $hireMeButtonLink = .params.hireMeButton.link }}
+{{ end }}
+
+
+<section class="py-10 md:py-16">
+  <div class="container max-w-screen-xl mx-auto px-4">
+    <div class="text-center">
+      <div class="flex justify-center mb-16">
+        <img
+          class="rounded-full"
+          src="{{ $avatar.RelPermalink }}"
+          alt="{{ $title }}"
+          title="{{ $title }}"
+        />
+      </div>
+
+      <h6 class="font-medium text-gray-600 text-lg md:text-2xl uppercase mb-8">
+        {{ $title }}
+      </h6>
+
+      <h1
+        class="font-normal text-gray-900 text-4xl md:text-7xl leading-none mb-8"
+      >
+        {{ $subtitle }}
+      </h1>
+
+      <p class="font-normal text-gray-600 text-md md:text-xl mb-16">
+        {{ $description }}
+      </p>
+
+      {{ if $hireMeButtonEnabled }}
+        <a
+          href="{{ $hireMeButtonLink }}"
+          target="_blank"
+          class="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold bg-gray-700 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500"
+          >{{ $hireMeButtonText }}</a
+        >
+      {{ end }}
+    </div>
+  </div>
+</section>
