@@ -1,12 +1,53 @@
-<section class="py-10 md:py-16">
-  <div class="container max-w-screen-xl mx-auto px-4">
-    <nav class="flex items-center justify-between">
-      <img src="img/navbar-logo.png" alt="Logo" />
+{{ with site.Data.navbar }}
+  {{ $logoPath := "images/default-logo.png" }}
+  {{ if .params.logo }}{{ $logoPath = .params.logo }}{{ end }}
+  {{ $logo := (resources.Get $logoPath).Resize "x40" }}
 
-      <button
-        class="px-7 py-3 md:px-9 md:py-4 bg-white font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-700 hover:text-white transition ease-linear duration-500">
-        Get my CV
-      </button>
-    </nav>
-  </div>
-</section>
+  {{ $titleText := "hugo-porto" }}
+  {{ if .params.title.text }}{{ $titleText = .params.title.text }}{{ end }}
+
+  {{ $titleEnabled := false }}
+  {{ if .params.title.enabled }}
+    {{ $titleEnabled = true }}
+  {{ end }}
+
+  {{ $getMyCVButtonEnabled := false }}
+  {{ if .params.getMyCVButton.enabled }}
+    {{ $getMyCVButtonEnabled = true }}
+  {{ end }}
+
+  {{ $getMyCVButtonText := "Get my CV" }}
+  {{ if .params.getMyCVButton.text }}
+    {{ $getMyCVButtonText = .params.getMyCVButton.text }}
+  {{ end }}
+
+  {{ $getMyCVButtonLink := "#" }}
+  {{ if .params.getMyCVButton.link }}
+    {{ $getMyCVButtonLink = .params.getMyCVButton.link }}
+  {{ end }}
+
+
+  <section class="py-10 md:py-16">
+    <div class="container max-w-screen-xl mx-auto px-4">
+      <nav class="flex items-center justify-between">
+        <a href="{{ .site.BaseURL }}" class="flex items-center">
+          <img src="{{ $logo.RelPermalink }}" alt="" />
+          {{ if $titleEnabled }}
+            <span class="font-medium text-gray-900 text-xl ml-2">
+              {{ $titleText }}
+            </span>
+          {{ end }}
+        </a>
+        {{ if $getMyCVButtonEnabled }}
+          <a
+            href="{{ $getMyCVButtonLink }}"
+            target="_blank"
+            class="px-7 py-3 md:px-9 md:py-4 bg-white font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-700 hover:text-white transition ease-linear duration-500"
+          >
+            {{ $getMyCVButtonText }}
+          </a>
+        {{ end }}
+      </nav>
+    </div>
+  </section>
+{{ end }}
