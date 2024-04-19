@@ -42,12 +42,14 @@
         </a>
         <div class="flex items-center space-x-7">
           {{ range .params.menu }}
-            <a
-              href="{{ .link }}"
-              class="font-medium text-gray-700 text-md hover:text-gray-900 transition ease-linear duration-500"
-            >
-              {{ .name }}
-            </a>
+          <div class="relative">
+            <h6 class="font-medium text-gray-700 text-md hover:text-gray-900 transition ease-linear duration-500 relative z-10">
+              <a href="{{ .link }}">{{ .name }}</a>
+            </h6>
+            <span
+              class="w-5 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"
+            ></span>
+          </div>
           {{ end }}
 
         {{ if $getMyCVButtonEnabled }}
