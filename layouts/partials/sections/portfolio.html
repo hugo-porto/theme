@@ -20,25 +20,31 @@
 
 
           <div class="flex space-x-6">
-            <h1 class="font-normal text-gray-700 text-3xl md:text-4xl">
+            <h1 class="font-normal text-gray-700 text-3xl md:text-4xl px-5">
               {{ print "0" $counter }}
             </h1>
 
             <span class="w-28 h-0.5 bg-gray-300 mt-5"></span>
 
-            <a href="{{ .link }}" target="_blank">
-              <div>
-                <h1 class="font-normal text-gray-700 text-3xl md:text-4xl mb-5">
-                  {{ .title }}
-                </h1>
+            <div>
+              <h1 class="font-normal text-gray-700 text-3xl md:text-4xl mb-5">
+                {{ .title }}
+              </h1>
 
-                <p
-                  class="font-normal text-gray-500 text-sm md:text-base  max-w-screen-sm"
-                >
-                  {{ .description }}
-                </p>
+              <p
+                class="font-normal text-gray-500 text-sm md:text-base  max-w-screen-sm"
+              >
+                {{ .description }}
+              </p>
+              <div class="relative mt-5">
+                <h6 class="text-gray-500 text-md relative z-10">
+                  <a href="{{ .link }}">{{ .link }}</a>
+                </h6>
+                <span
+                  class="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"
+                ></span>
               </div>
-            </a>
+            </div>
           </div>
         {{ end }}
 
