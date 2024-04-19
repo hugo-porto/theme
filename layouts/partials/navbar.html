@@ -1,7 +1,10 @@
 {{ with site.Data.navbar }}
   {{ $logoPath := "images/default-logo.png" }}
   {{ if .params.logo }}{{ $logoPath = .params.logo }}{{ end }}
-  {{ $logo := (resources.Get $logoPath).Resize "x40" }}
+  {{ $logo := (resources.Get $logoPath) }}
+  {{ if ne (index (split $logoPath ".") 1 ) "svg" }}
+    {{ $logo = $logo.Resize "x40" }}
+  {{ end}}
 
   {{ $titleText := "hugo-porto" }}
   {{ if .params.title.text }}{{ $titleText = .params.title.text }}{{ end }}
@@ -30,19 +33,29 @@
   <section class="py-10 md:py-16">
     <div class="container max-w-screen-xl mx-auto px-4">
       <nav class="flex items-center justify-between">
-        <a href="{{ .site.BaseURL }}" class="flex items-center">
-          <img src="{{ $logo.RelPermalink }}" alt="" />
+        <a href="{{ .site.BaseURL }}" class="flex items-center" title="{{- site.Title -}}">
+          <img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}" style="height: 40px;"/>
           {{ if $titleEnabled }}
             <div class="font-medium text-gray-700 text-xl ml-2">
               {{ $titleText }}
             </div>
           {{ end }}
         </a>
+        <div class="flex items-center space-x-7">
+          {{ range .params.menu }}
+            <a
+              href="{{ .link }}"
+              class="font-medium text-gray-700 text-md hover:text-gray-900 transition ease-linear duration-500"
+            >
+              {{ .name }}
+            </a>
+          {{ end }}
+
         {{ if $getMyCVButtonEnabled }}
           <a
             href="{{ $getMyCVButtonLink }}"
             target="_blank"
-            class="px-7 py-3 md:px-9 md:py-4 bg-white font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-700 hover:text-white transition ease-linear duration-500"
+            class="hidden md:flex px-7 py-3 md:px-9 md:py-4 bg-white font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-700 hover:text-white transition ease-linear duration-500"
           >
             {{ $getMyCVButtonText }}
           </a>
