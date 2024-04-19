@@ -5,7 +5,23 @@
 <link rel="stylesheet" href="css/tailwind.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
   integrity="sha512-7x3zila4t2qNycrtZ31HO0NnJr8kg2VI67YLoRSyi9hGhRN66FHYWr7Axa9Y1J9tGYHVBPqIjSE1ogHrJTz51g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+{{ $favicon := "images/default-favicon.png" }}
+{{ if site.Params.favicon }}
+  {{ $favicon = site.Params.favicon }}
+{{ end }}
+{{ $favicon = resources.Get $favicon }}
+{{ if ne $favicon.MediaType.SubType "svg" }}
+  {{ $favicon = $favicon.Resize "32x" }}
+{{ end }}
+<link rel="icon" href="{{ $favicon.RelPermalink }}" />
