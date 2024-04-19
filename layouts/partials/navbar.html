@@ -2,7 +2,7 @@
   {{ $logoPath := "images/default-logo.png" }}
   {{ if .params.logo }}{{ $logoPath = .params.logo }}{{ end }}
   {{ $logo := (resources.Get $logoPath) }}
-  {{ if ne (index (split $logoPath ".") 1 ) "svg" }}
+  {{ if ne $logo.MediaType.SubType "svg"}}
     {{ $logo = $logo.Resize "x40" }}
   {{ end}}
 
@@ -28,7 +28,6 @@
   {{ if .params.getMyCVButton.link }}
     {{ $getMyCVButtonLink = .params.getMyCVButton.link }}
   {{ end }}
-
 
   <section class="py-10 md:py-16">
     <div class="container max-w-screen-xl mx-auto px-4">
