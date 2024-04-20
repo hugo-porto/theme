@@ -1,15 +1,45 @@
 <section class="py-10 md:py-16">
   <div class="container max-w-screen-xl mx-auto px-4">
-    <div class="text-center">
-      <h1
-        class="font-normal text-gray-300 text-3xl md:text-6xl lg:text-7xl mb-20 md:mb-32 "
-      >
-        {{ .params.title }}
-      </h1>
+    <div class="flex flex-col lg:flex-row justify-between">
+      <div class="mb-10 lg:mb-0">
+        <h1 class="font-medium text-gray-700 text-3xl md:text-4xl mb-5">
+          {{ .params.title }}
+        </h1>
+        {{ range .params.description }}
+          <p
+            class="font-normal text-gray-500 text-xs md:text-base lg:max-w-screen-sm mb-5"
+          >
+            {{ .text }}
+          </p>
+        {{ end }}
+      </div>
 
-      <p class="text-gray-700 text-lg ">
-        {{ .params.subtitle }}
-      </p>
+      <div class="space-y-24">
+        {{ range sort .company "weight" }}
+
+          <div class="flex space-x-6">
+            <h1 class="font-normal text-gray-700 text-3xl md:text-4xl px-5 ">
+              {{ .years }}
+            </h1>
+
+            <span class="w-28 h-0.5 bg-gray-300 mt-5"></span>
+
+            <div>
+              <h1 class="font-normal text-gray-700 text-3xl md:text-4xl mb-5">
+                {{ .title }}
+              </h1>
+              {{ range .description }}
+                <p
+                  class="font-normal text-gray-500 text-sm md:text-base  max-w-screen-sm mb-5"
+                >
+                  {{ .text }}
+                </p>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+
+      </div>
     </div>
   </div>
 </section>
