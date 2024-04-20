@@ -25,3 +25,5 @@
   {{ $favicon = $favicon.Resize "32x" }}
 {{ end }}
 <link rel="icon" href="{{ $favicon.RelPermalink }}" />
+
+{{ template "_internal/google_analytics.html" . }}
