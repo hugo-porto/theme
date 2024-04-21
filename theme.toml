@@ -1,0 +1,37 @@
+description = "The personal portfolio theme for Hugo"
+license = "MIT"
+licenselink = "https://github.com/hugo-porto/theme/blob/main/LICENSE"
+name = "Porto"
+
+# The home page of the theme, where the source can be found.
+homepage = "https://github.com/hugo-porto/theme"
+
+# If you have a running demo of the theme.
+demosite = "https://hugo-porto.netlify.app/"
+
+features = [
+  "Clean Minimalist Design",
+  "Fully Responsive",
+  "Fully customizable Blocks",
+  "Easy to Extend Landing Page",
+  "Google Analytics Support",
+]
+tags = [
+  "Portfolio",
+  "Resume",
+  "Projects",
+  "Minimalist",
+  "Responsive",
+  "Customizable",
+  "Google analytics",
+  "Tailwinds CSS",
+]
+
+[author]
+homepage = "https://andrew.molyuk.com/"
+name = "Andrew Molyuk"
+
+[module]
+[module.hugoVersion]
+extended = true
+min = "0.125.0"
