@@ -1,15 +1,26 @@
+{{ $logoPath := "images/default-logo.png" }}
+{{ $logo:= (resources.Get $logoPath) }}
+{{ $logoLink := "#" }}
+{{ $titleText := "hugo-porto" }}
+{{ $titleEnabled := true }}
+{{ $getMyCVButtonEnabled := true }}
+{{ $getMyCVButtonText := "Get my CV" }}
+{{ $getMyCVButtonLink := "#" }}
+{{ $menu := slice }}
+
 {{ with site.Data.navbar }}
-  {{ $logoPath := "images/default-logo.png" }}
-  {{ if .params.logo }}{{ $logoPath = .params.logo }}{{ end }}
-  {{ $logo := (resources.Get $logoPath) }}
+  {{ if .params.logo }}
+    {{ $logoPath = .params.logo }}
+    {{ $logo = (resources.Get $logoPath) }}
+  {{ end }}
   {{ if ne $logo.MediaType.SubType "svg"}}
     {{ $logo = $logo.Resize "x40" }}
   {{ end}}
 
-  {{ $titleText := "hugo-porto" }}
+  {{ if .site.BaseURL }} {{ $logoLink = .site.BaseURL }} {{ end }}
+
   {{ if .params.title.text }}{{ $titleText = .params.title.text }}{{ end }}
 
-  {{ $titleEnabled := false }}
   {{ if .params.title.enabled }}
     {{ $titleEnabled = true }}
   {{ end }}
@@ -29,10 +40,15 @@
     {{ $getMyCVButtonLink = .params.getMyCVButton.link }}
   {{ end }}
 
+  {{ if .params.menu }}
+    {{ $menu = .params.menu }}
+    {{ end }}
+{{ end }}
+
   <section class="py-10 md:py-16">
     <div class="container max-w-screen-xl mx-auto px-4">
       <nav class="flex items-center justify-between">
-        <a href="{{ .site.BaseURL }}" class="flex items-center" title="{{- site.Title -}}">
+        <a href="{{ $logoLink }}" class="flex items-center" title="{{- site.Title -}}">
           <img src="{{ $logo.RelPermalink }}" alt="{{ site.Title }}" style="height: 40px;"/>
           {{ if $titleEnabled }}
             <div class="font-medium text-gray-700 text-xl ml-2">
@@ -41,7 +57,7 @@
           {{ end }}
         </a>
         <div class="flex items-center space-x-7">
-          {{ range .params.menu }}
+          {{ range $menu }}
           <div class="relative">
             <h6 class="font-medium text-gray-700 text-md hover:text-gray-900 transition ease-linear duration-500 relative z-10">
               <a href="{{ .link }}">{{ .name }}</a>
@@ -51,7 +67,6 @@
             ></span>
           </div>
           {{ end }}
-
         {{ if $getMyCVButtonEnabled }}
           <a
             href="{{ $getMyCVButtonLink }}"
@@ -64,4 +79,3 @@
       </nav>
     </div>
   </section>
-{{ end }}
