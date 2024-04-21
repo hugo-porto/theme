@@ -1,6 +1,7 @@
 # Hugo workfiles and public folder
 .hugo_build.lock
 public
+resources/_gen
 
 # Mac OS files
 .DS_Store
