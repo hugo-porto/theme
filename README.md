@@ -9,9 +9,95 @@ yet powerful online portfolio.
 The theme was inspired and based originally on the [Porto](https://boxmodel.dev/templates/porto/html) theme from
 [BoxModelDev](https://boxmodel.dev/)'s guys.
 
+## Features
+
+- Clean and minimalist design
+- Complete responsiveness for all devices
+- Highly customizable blocks for personalized design
+- Easily extendable landing page for more content
+- Support for Google Analytics for tracking and insights
+
+## Roadmap
+
+I'm constantly working on improving and expanding the features of this theme. If you find that a feature you need is
+missing, please feel free to contact me. I'm open to dialogue and would be happy to discuss potential additions to the theme.
+
+Features planned to implement in the nearest time:
+
+- Opengraph and SEO meta information
+- Posts support
+- Default mock data to easy install and implementaton
+- Generator of configuration files
+
+## Screenshots
+
+Here are some screenshots of the theme in action:
+
+![Home Page Section](https://raw.githubusercontent.com/hugo-porto/theme/main/images/tn.png)
+This is the home section
+
+![Portfolio Section](https://raw.githubusercontent.com/hugo-porto/theme/main/images/portfolio.png)
+This is the portfolio section where you can showcase your projects and achievements.
+
+![Testimonials Section](https://raw.githubusercontent.com/hugo-porto/theme/main/images/testimonials.png)
+This is the testimonials section where you can show your recommendations.
+
 ## Prerequisites
 
 - [Hugo](https://gohugo.io/getting-started/installing/) - a popular open-source static site generator written in Go.
+
+## Install
+
+The simplest method to use this theme is by forking the [web](https://github.com/hugo-porto/web) sample repository.
+Afterwards, adjust the configurations to suit your requirements.
+
+If you want to install the theme from scratch using Hugo modules, follow these steps:
+
+1. First, ensure that you have [Hugo](https://gohugo.io/getting-started/installing/) installed on your system. You need version 0.125.0 or higher.
+
+2. Create a new Hugo site if you haven't already. You can do this by running the following command in your terminal:
+
+```bash
+hugo new site mysite
+```
+
+Replace `mysite` with the name of your site.
+
+3. Navigate to the root directory of your new site:
+
+```bash
+cd mysite
+```
+
+4. Initialize Hugo modules:
+
+```shell
+hugo mod init github.com/<your username>/<your repo name>
+```
+
+5. Add the Hugo Porto theme as a Hugo module in your configuration file:
+
+```toml
+[module]
+[[module.imports]]
+path = "github.com/hugo-porto/theme"
+```
+
+6. Download latest version of the theme:
+
+```shell
+hugo mod tidy
+```
+
+7. Finally, start your Hugo server:
+
+```bash
+hugo server
+```
+
+You should now be able to see your new site at `http://localhost:1313`.
+
+8. Now you have to add configuration files to your data folder according your needs. You can see example files at [https://github.com/hugo-porto/web/tree/main/data](https://github.com/hugo-porto/web/tree/main/data).
 
 ## Contributing
 
