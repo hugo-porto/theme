@@ -11,7 +11,7 @@
 
 {{/* Custom data from configuration file */}}
 
-{{ with site.Data.navbar }}
+{{ with site.Data.home }}
   {{ if .params.avatar }}{{ $avatar := (resources.Get .params.avatar) }}{{ end }}
   {{ $avatar := $avatar.Resize "262x262" }}
 
