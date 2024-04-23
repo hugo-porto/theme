@@ -1,5 +1,5 @@
 {{/*  Default data  */}}
-{{ $logo := (resources.Get "images/default-logo.png") }}
+{{ $logo := "images/default-logo.png" }}
 {{ $logoLink := "#" }}
 
 {{ $titleEnabled := true }}
@@ -13,7 +13,8 @@
 
 {{/*  Custom data from configuration file  */}}
 {{ with site.Data.navbar }}
-  {{ if .params.logo }}{{ $logo = (resources.Get .params.logo) }}{{ end }}
+  {{ if .params.logo }}{{ $logo = .params.logo }}{{ end }}
+  {{ $logo = (resources.Get .params.logo) }}
 
   {{ if .site.BaseURL }}{{ $logoLink = .site.BaseURL }}{{ end }}
 

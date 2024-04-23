@@ -1,5 +1,5 @@
 {{/* Default data */}}
-{{ $avatar := (resources.Get "images/default-avatar.png") }}
+{{ $avatar := "images/default-avatar.png" }}
 
 {{ $title := "Kate Wolff" }}
 {{ $subtitle := "Senior Backend Developer" }}
@@ -12,8 +12,8 @@
 {{/* Custom data from configuration file */}}
 
 {{ with site.Data.home }}
-  {{ if .params.avatar }}{{ $avatar = (resources.Get .params.avatar) }}{{ end }}
-  {{ $avatar = $avatar.Resize "262x262" }}
+  {{ if .params.avatar }}{{ $avatar = .params.avatar }}{{ end }}
+  {{ $avatar = (resources.Get $avatar).Resize "262x262" }}
 
   {{ if .params.title }}{{ $title = .params.title }}{{ end }}
   {{ if .params.subtitle }}{{ $subtitle = .params.subtitle }}{{ end }}
