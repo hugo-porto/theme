@@ -1,20 +1,19 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="{{- .Site.Params.description -}}" />
+<meta name="author" content="{{- .Site.Author.name -}}" />
+<meta name="keywords" content="{{- .Site.Params.keywords -}}" />
 <title>{{- .Site.Title -}}</title>
 <link rel="stylesheet" href="css/tailwind.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"
   integrity="sha512-7x3zila4t2qNycrtZ31HO0NnJr8kg2VI67YLoRSyi9hGhRN66FHYWr7Axa9Y1J9tGYHVBPqIjSE1ogHrJTz51g=="
   crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
+  referrerpolicy="no-referrer"></script>
 
 {{ $favicon := "images/default-favicon.png" }}
 {{ if site.Params.favicon }}
