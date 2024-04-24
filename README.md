@@ -29,6 +29,15 @@ Features planned to implement in the nearest time:
 - Default mock data to easy install and implementaton
 - Generator of configuration files
 
+## Demo
+
+For a live demonstration of the theme in action, please visit the demo website at
+[https://hugo-porto.netlify.app/](https://hugo-porto.netlify.app/). This demo site showcases all the features and design
+elements that the Hugo Porto theme has to offer, providing a comprehensive overview of its capabilities.
+
+You can find the source code for the demo website at
+[https://github.com/hugo-porto/web](https://github.com/hugo-porto/web).
+
 ## Screenshots
 
 Here are some screenshots of the theme in action:
@@ -53,7 +62,8 @@ Afterwards, adjust the configurations to suit your requirements.
 
 If you want to install the theme from scratch using Hugo modules, follow these steps:
 
-1. First, ensure that you have [Hugo](https://gohugo.io/getting-started/installing/) installed on your system. You need version 0.125.0 or higher.
+1. First, ensure that you have [Hugo](https://gohugo.io/getting-started/installing/) installed on your system. You need
+   version 0.125.0 or higher.
 
 2. Create a new Hugo site if you haven't already. You can do this by running the following command in your terminal:
 
@@ -98,6 +108,16 @@ hugo server
 You should now be able to see your new site at `http://localhost:1313`.
 
 8. Now you have to add configuration files to your data folder according your needs. You can see example files at [https://github.com/hugo-porto/web/tree/main/data](https://github.com/hugo-porto/web/tree/main/data).
+
+## Adding a Custom Section
+
+The Hugo Porto theme allows you to add your own custom sections to your website, as demonstrated on the
+[demo website](https://hugo-porto.netlify.app/). To add a custom section, you need to add a configuration file to the
+`data/sections` directory and a template to the `layout/partials/sections` directory. The theme is built with Tailwind
+CSS, enabling you to style your section as needed.
+
+You can find and use the source code for the demo website at
+[https://github.com/hugo-porto/web](https://github.com/hugo-porto/web).
 
 ## Contributing
 
