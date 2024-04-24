@@ -67,45 +67,45 @@ If you want to install the theme from scratch using Hugo modules, follow these s
 
 2. Create a new Hugo site if you haven't already. You can do this by running the following command in your terminal:
 
-```bash
-hugo new site mysite
-```
+   ```bash
+   hugo new site mysite
+   ```
 
-Replace `mysite` with the name of your site.
+   Replace `mysite` with the name of your site.
 
 3. Navigate to the root directory of your new site:
 
-```bash
-cd mysite
-```
+   ```bash
+   cd mysite
+   ```
 
 4. Initialize Hugo modules:
 
-```shell
-hugo mod init github.com/<your username>/<your repo name>
-```
+   ```shell
+   hugo mod init github.com/<your username>/<your repo name>
+   ```
 
 5. Add the Hugo Porto theme as a Hugo module in your configuration file:
 
-```toml
-[module]
-[[module.imports]]
-path = "github.com/hugo-porto/theme"
-```
+   ```toml
+   [module]
+   [[module.imports]]
+   path = "github.com/hugo-porto/theme"
+   ```
 
 6. Download latest version of the theme:
 
-```shell
-hugo mod tidy
-```
+   ```shell
+   hugo mod tidy
+   ```
 
 7. Finally, start your Hugo server:
 
-```bash
-hugo server
-```
+   ```bash
+   hugo server
+   ```
 
-You should now be able to see your new site at `http://localhost:1313`.
+   You should now be able to see your new site at `http://localhost:1313`.
 
 8. Now you have to add configuration files to your data folder according your needs. You can see example files at [https://github.com/hugo-porto/web/tree/main/data](https://github.com/hugo-porto/web/tree/main/data).
 
