@@ -11,27 +11,33 @@
     <section>
       <div class="container max-w-screen-xl mx-auto px-4">
         <h1 class="text-center font-medium text-gray-700 text-3xl md:text-4xl mb-5">Posts</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {{ $posts := where .RegularPagesRecursive "Layout" "!=" "search" }}
-          {{ $paginator := .Paginate $posts 8 }}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {{ $posts := .Pages.ByPublishDate.Reverse }}
+          {{ $paginator := .Paginate $posts 10 }}
           {{ range $paginator.Pages }}
-            <a href="{{ .RelPermalink }}" class="post-card-link">
-              <div class="bg-gray-50 px-8 py-10 rounded-md">
+            <div class="bg-gray-50 px-8 py-10 rounded-md">
+              <a href="{{ .RelPermalink }}">
                 <img
                   class="rounded-md mb-4"
                   src="{{ .RelPermalink }}/{{ .Params.image }}"
                   alt="{{ .Title }}"
                   title="{{ .Title }}" />
-                <h2 class="font-medium text-gray-700 text-xl mb-4">{{ .Title }}</h2>
-                <p class="font-normal text-gray-500 text-md">
-                  {{ .Summary |
-                    replaceRE "<p>" "<p class=\"font-normal text-gray-500 text-md py-2\">" |
-                    replaceRE "<h2 " "<h2 class=\"font-medium text-gray-700 text-3xl md:text-4xl mb-5\" " |
-                    safeHTML
-                  }}
-                </p>
+              </a>
+              <div class="relative">
+                <a href="{{ .RelPermalink }}">
+                  <h2 class="font-medium text-gray-700 text-xl mb-4 relative z-10">{{ .Title }}</h2>
+                </a>
+                <span class="w-20 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
               </div>
-            </a>
+              <p class="font-normal text-gray-500 text-md">
+                {{ .Summary |
+                  replaceRE "<p>" "<p class=\"font-normal text-gray-500 text-md py-2\">" |
+                  replaceRE "<a " "<a class=\"text-blue-500 hover:text-blue-700 hover:underline\" " |
+                  replaceRE "<h2 " "<h2 class=\"font-medium text-gray-700 text-3xl md:text-4xl mb-5\" " |
+                  safeHTML
+                }}
+              </p>
+            </div>
           {{ end }}
         </div>
         {{ partial "partials/pagination.html" . }}
