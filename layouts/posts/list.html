@@ -22,8 +22,14 @@
                   src="{{ .RelPermalink }}/{{ .Params.image }}"
                   alt="{{ .Title }}"
                   title="{{ .Title }}" />
-                <h4 class="font-medium text-gray-700 text-lg mb-4">{{ .Title }}</h4>
-                <p class="font-normal text-gray-500 text-md">{{ .Summary }}</p>
+                <h2 class="font-medium text-gray-700 text-xl mb-4">{{ .Title }}</h2>
+                <p class="font-normal text-gray-500 text-md">
+                  {{ .Summary |
+                    replaceRE "<p>" "<p class=\"font-normal text-gray-500 text-md py-2\">" |
+                    replaceRE "<h2 " "<h2 class=\"font-medium text-gray-700 text-3xl md:text-4xl mb-5\" " |
+                    safeHTML
+                  }}
+                </p>
               </div>
             </a>
           {{ end }}
