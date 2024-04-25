@@ -25,9 +25,29 @@
               </a>
               <div class="relative">
                 <a href="{{ .RelPermalink }}">
-                  <h2 class="font-medium text-gray-700 text-xl mb-4 relative z-10">{{ .Title }}</h2>
+                  <h2 class="font-medium text-gray-700 text-xl relative z-10">{{ .Title }}</h2>
                 </a>
                 <span class="w-20 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
+              </div>
+              <div class="flex items-center">
+                <div class="my-2 flex whitespace-nowrap items-center">
+                  <i data-feather="calendar" class="text-gray-500 w-4"></i>
+                  <span class="text-gray-500 text-sm mx-1">{{ .Date.Format "02-01-2006" }}</span>
+                </div>
+                <div class="m-2 text-sm flex whitespace-nowrap items-center">
+                  <i data-feather="clock" class="text-gray-500 w-4"></i>
+                  <span class="text-gray-500 text-sm mx-1">
+                    {{ .ReadingTime }}
+                    {{ if eq .ReadingTime 1 }}minute{{ else }}minutes{{ end }}
+                  </span>
+                </div>
+                <div class="my-2 flex whitespace-nowrap items-center">
+                  <i data-feather="tag" class="text-gray-500 w-4"></i>
+                  {{ range index .Params "tags" }}
+                    {{ $href := print (absURL "tags/") (urlize .) }}
+                    <a class="text-gray-500 text-sm mx-1" href="{{ $href }}" aria-label="{{ . }}">{{ . }}</a>
+                  {{ end }}
+                </div>
               </div>
               <p class="font-normal text-gray-500 text-md">
                 {{ .Summary |
