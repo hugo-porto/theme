@@ -12,7 +12,7 @@ tailwind:
 @PHONY: tailwind
 
 build:
-		npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css
+		npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --minify
 @PHONY: build
 
 dev:
