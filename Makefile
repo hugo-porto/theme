@@ -3,7 +3,8 @@
 .SILENT:
 
 lint:
-	markdownlint **/*.md
+	markdownlint '**/*.md' --ignore node_modules
+	stylelint '**/*.{css,scss}'
 @PHONY: lint
 
 tailwind:
