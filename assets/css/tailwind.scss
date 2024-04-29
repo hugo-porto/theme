@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .post-content {
+    h2 {
+      @apply font-medium text-gray-700 text-xl md:text-2xl my-5;
+    }
+    h3 {
+      @apply font-medium text-gray-700 text-lg md:text-xl my-3;
+    }
+    h4 {
+      @apply font-medium text-gray-700 text-base md:text-lg my-3;
+    }
+    p {
+      @apply text-gray-700 text-base py-2;
+    }
+    ul {
+      @apply list-disc py-2;
+    }
+    li {
+      @apply text-gray-700 text-base mx-5 px-2 py-2;
+    }
+    a {
+      @apply text-blue-500 hover:text-blue-700 hover:underline;
+    }
+    pre {
+      @apply px-5 rounded-md my-5;
+    }
+    code {
+      @apply rounded-md px-2;
+    }
+  }
+  .post-card {
+    h2 {
+      @apply font-medium text-gray-700 text-3xl md:text-4xl mb-5;
+    }
+    p {
+      @apply font-normal text-gray-500 text-base py-2;
+    }
+    a {
+      @apply text-blue-500 hover:text-blue-700 hover:underline;
+    }
+  }
+}
