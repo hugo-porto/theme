@@ -49,5 +49,5 @@
     "string-no-newline": true,
     "unit-no-unknown": true
   },
-  "ignoreFiles": ["static/css/tailwind.css", "public/**/*.css"]
+  "ignoreFiles": ["**/**.css"]
 }

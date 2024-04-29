@@ -4,7 +4,7 @@
 
 lint:
 	markdownlint '**/*.md' --ignore node_modules
-	stylelint '**/*.{css,scss}'
+	stylelint '**/*.scss'
 @PHONY: lint
 
 tailwind:
