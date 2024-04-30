@@ -3,7 +3,7 @@
   "description": "A Hugo theme for creating a portfolio website",
   "version": "0.0.1",
   "author": "Andrew Molyuk",
-  "license": "MIT",
+  "license": "MPL 2.0",
   "devDependencies": {
     "prettier": "^3.2.5",
     "prettier-plugin-go-template": "^0.0.15"

@@ -125,5 +125,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 
-This project is licensed under the terms of the MIT license. For more details, see the [LICENSE](LICENSE) file in the
-project root.
+This project is licensed under the terms of the MPL 2.0 license. For more details, see the [LICENSE](LICENSE) file in
+the project root.
