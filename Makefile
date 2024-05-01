@@ -1,4 +1,4 @@
-.DEFAULT_GOAL: lint
+.DEFAULT_GOAL: build
 .NOTPARALLEL:
 .SILENT:
 
@@ -20,6 +20,6 @@ dev:
 @PHONY: dev
 
 upgrade:
-	npm -g ls npm-check-updates | grep -c npm-check-updates || npm install -g npm-check-updates
+	npm -g ls npm-check-updates | grep -c npm-check-updates || npm install -g npm-check-updates 
 	ncu -u &&	npm install --no-fund --no-audit
 @PHONY: upgrade
