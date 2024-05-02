@@ -1,14 +1,14 @@
 {{/* Default values */}}
 {{ $copyright := printf "© %d Andrew Molyuk" now.Year }}
-{{ $social := slice }}
 
 {{/* Custom data from configuration file */}}
 {{ with site.Data.footer }}
   {{ if .copyright }}{{ $copyright = .copyright }}{{ end }}
-  {{ if .social }}{{ $social = .social }}{{ end }}
 {{ end }}
 
+{{ partial "footer/socials.html" }}
 
-<div class="p-5 text-center">
+
+<div class="pb-5 text-center">
   <div>{{ $copyright }}</div>
 </div>

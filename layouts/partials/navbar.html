@@ -48,9 +48,9 @@
 </div>
 
 <div
-  class="pointer-events-none fixed inset-0 min-h-screen bg-black bg-opacity-75 opacity-0  lg:hidden"
+  class="pointer-events-none fixed inset-0 min-h-screen bg-black bg-opacity-75 opacity-0 lg:hidden"
   :class="{ 'opacity-100 pointer-events-auto': mobileMenu }">
-  <div class="absolute right-0 bg-gray-200 py-5 px-10 w-full sm:w-2/3 md:w-1/3">
+  <div class="absolute right-0 min-h-screen bg-gray-200 py-5 px-10 w-full sm:w-2/3 md:w-1/3">
     <button class="absolute top-0 right-0 mt-5 mr-4" @click="mobileMenu = false">
       <i class="bx bx-x text-4xl"></i>
     </button>
