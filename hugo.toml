@@ -1,0 +1,7 @@
+baseURL      = 'https://example.org/'
+languageCode = 'en-us'
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min      = "0.116.0"

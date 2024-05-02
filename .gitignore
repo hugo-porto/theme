@@ -6,5 +6,8 @@ resources/_gen
 # Mac OS files
 .DS_Store
 
-# Node.js
+# Node.js files
 node_modules
+
+# Mock content files
+content

@@ -1,5 +1,4 @@
 .DEFAULT_GOAL: build
-.NOTPARALLEL:
 .SILENT:
 
 lint:
@@ -7,17 +6,21 @@ lint:
 	stylelint '**/*.scss'
 @PHONY: lint
 
-tailwind:
+dev-tailwind:
 	npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --watch
 @PHONY: tailwind
+
+dev-hugo:
+	hugo server --buildDrafts
+@PHONY: dev-hugo
+
+dev:
+	make -j 2 dev-tailwind dev-hugo 
+@PHONY: dev
 
 build:
 		npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --minify
 @PHONY: build
-
-dev:
-	hugo server --buildDrafts
-@PHONY: dev
 
 upgrade:
 	npm -g ls npm-check-updates | grep -c npm-check-updates || npm install -g npm-check-updates 
