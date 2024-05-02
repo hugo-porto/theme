@@ -7,7 +7,7 @@ lint:
 @PHONY: lint
 
 dev-tailwind:
-	npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --watch
+	npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --minify --watch
 @PHONY: tailwind
 
 dev-hugo:
