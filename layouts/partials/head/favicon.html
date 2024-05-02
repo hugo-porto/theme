@@ -1,0 +1,12 @@
+{{ $favicon := "img/default-favicon.png" }}
+{{ if site.Params.favicon }}
+  {{ $favicon = site.Params.favicon }}
+{{ end }}
+
+{{ $favicon = resources.Get $favicon }}
+{{ if ne $favicon.MediaType.SubType "svg" }}
+  {{ $favicon = $favicon.Resize "32x" }}
+{{ end }}
+
+
+<link rel="icon" href="{{ $favicon.RelPermalink }}" />

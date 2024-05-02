@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer base {
   body {
-    @apply bg-gray-100;
+    @apply bg-gray-100 text-gray-600 text-lg font-sans font-light;
+  }
+
+  h1 {
+    @apply text-4xl font-sans font-normal;
   }
 }
