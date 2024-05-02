@@ -19,7 +19,7 @@ dev:
 @PHONY: dev
 
 build:
-		npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --minify
+	npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --minify
 @PHONY: build
 
 upgrade:
