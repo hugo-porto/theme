@@ -56,7 +56,7 @@ Afterwards, adjust the configurations to suit your requirements.
 If you want to install the theme from scratch using Hugo modules, follow these steps:
 
 1. First, ensure that you have [Hugo](https://gohugo.io/getting-started/installing/) installed on your system. You need
-   version 0.125.0 or higher.
+   version 0.116.0 or higher.
 
 2. Create a new Hugo site if you haven't already. You can do this by running the following command in your terminal:
 
