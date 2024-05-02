@@ -1,12 +1,12 @@
 {{- /*
-For a given taxonomy, renders a list of terms assigned to the page.
+  For a given taxonomy, renders a list of terms assigned to the page.
 
-@context {page} page The current page.
-@context {string} taxonomy The taxonomy.
+  @context {page} page The current page.
+  @context {string} taxonomy The taxonomy.
 
-@example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  @example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .)
+}}
 */}}
-
 {{- $page := .page }}
 {{- $taxonomy := .taxonomy }}
 
