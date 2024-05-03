@@ -4,10 +4,30 @@
 
 @layer base {
   body {
-    @apply bg-gray-100 text-gray-600 text-lg font-sans font-light;
+    @apply bg-gray-100 text-gray-600 text-lg font-light font-roboto;
   }
 
   h1 {
-    @apply text-4xl font-sans font-normal;
+    @apply text-4xl font-normal;
+  }
+
+  section {
+    @apply py-5 md:py-10;
+  }
+
+  .font-roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-outline-2 {
+    -webkit-text-stroke: 2px rgb(156 163 175);
+  }
+
+  .font-outline-3 {
+    -webkit-text-stroke: 3px rgb(156 163 175);
   }
 }

@@ -1,9 +1,9 @@
 {{ define "main" }}
   {{ $sections:= site.Data.sections }}
   {{ if $sections }}
-    {{ range sort $sections "section.weight" }}
-      {{ if .section.enabled }}
-        {{ partial (printf "sections/%s.html" (replace (lower .section.id) " " "-")) . }}
+    {{ range sort $sections ".weight" }}
+      {{ if .enabled }}
+        {{ partial (printf "sections/%s.html" (replace (lower .id) " " "-")) . }}
       {{ end }}
     {{ end }}
   {{ end }}
