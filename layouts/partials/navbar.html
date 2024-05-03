@@ -17,29 +17,38 @@
 {{ $logo = (resources.Get $logo) }}
 
 
-<div class="flex items-center justify-between">
-  <div class="flex items-center justify-between">
+<div class="flex items-center justify-between py-5">
+  <div class="flex items-center">
     <a href="{{ $logoLink }}">
-      <img src="{{ $logo.RelPermalink }}" class="py-5 w-12 lg:w-16 min-w-12" alt="{{ $title }}" title="{{ $title }}" />
+      <img src="{{ $logo.RelPermalink }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
     </a>
-    <a href="{{ $logoLink }}"><h1 class="text-xl lg:text-2xl px-5">{{ $title }}</h1></a>
+    <a href="{{ $logoLink }}"><h1 class="text-lg lg:text-xl px-2 lg:px-3">{{ $title }}</h1></a>
   </div>
   <div class="hidden lg:block">
     <ul class="flex items-center">
       {{ range $menu }}
-        <li class="px-2">
+        <li class="px-5">
           <a
             href="{{ .link }}"
             alt="{{ .description }}"
             title="{{ .description }}"
             target="{{ .target }}"
-            class="cursor-pointer uppercase font-normal">
+            class="cursor-pointer font-normal text-base">
             {{ .text }}
           </a>
         </li>
       {{ end }}
+      <li class="px-5">
+        <a href="/files/Andrew Molyuk.pdf" target="_blank">
+          <button
+            class="px-10 py-4 bg-white hover:bg-gray-600 hover:text-white rounded-lg font-normal text-base transition duration-300">
+            Get my CV
+          </button>
+        </a>
+      </li>
     </ul>
   </div>
+
   <div class="block lg:hidden mt-2">
     <button @click="mobileMenu = true">
       <i class="bx bx-menu text-3xl"></i>
@@ -51,7 +60,7 @@
   class="pointer-events-none fixed inset-0 min-h-screen bg-black bg-opacity-75 opacity-0 lg:hidden"
   :class="{ 'opacity-100 pointer-events-auto': mobileMenu }">
   <div class="absolute right-0 min-h-screen bg-gray-200 py-5 px-10 w-2/3 sm:w-1/3">
-    <button class="absolute top-0 right-0 mt-5 mr-4" @click="mobileMenu = false">
+    <button class="absolute top-0 right-0 mt-10 mr-4" @click="mobileMenu = false">
       <i class="bx bx-x text-4xl"></i>
     </button>
     <ul class="mt-8 flex flex-col">
