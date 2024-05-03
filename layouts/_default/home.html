@@ -1,7 +1,10 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
+  {{ $sections:= site.Data.sections }}
+  {{ if $sections }}
+    {{ range sort $sections "section.weight" }}
+      {{ if .section.enabled }}
+        {{ partial (printf "sections/%s.html" (replace (lower .section.id) " " "-")) . }}
+      {{ end }}
+    {{ end }}
   {{ end }}
 {{ end }}
