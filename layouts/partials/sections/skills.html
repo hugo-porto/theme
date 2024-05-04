@@ -18,15 +18,15 @@
 
 
 <section class="text-center text-gray-600">
-  <h2 class="text-4xl md:text-5xl lg:text-7xl font-medium font-poppins text-gray-300">
+  <h2 class="text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-300">
     {{ $title }}
   </h2>
   <div class="-mx-5 flex flex-wrap ">
     {{ range $skills }}
       <div class="w-full md:w-1/2 lg:w-1/3 p-5">
         <div class="mb-9 rounded-xl px-7 sm:p-9 lg:px-6 xl:px-9 bg-gray-50">
-          <div class="mx-auto inline-block ">
-            <i class="text-5xl bx {{ .icon }}"></i>
+          <div class="mx-auto inline-block">
+            <i class="text-4xl bx {{ .icon }}"></i>
           </div>
           <div>
             <h3 class="mb-4 text-lg font-medium font-poppins sm:text-xl lg:text-lg xl:text-xl">{{ .title }}</h3>
