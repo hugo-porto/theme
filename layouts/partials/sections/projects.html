@@ -1,0 +1,34 @@
+{{/* Default data */}}
+{{ $title := "Backing of Open Source" }}
+{{ $projects := slice
+  (dict "title" "React.js" "link" "https://reactjs.org/" "text" "React is a JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.")
+  (dict "title" "Vue.js" "link" "https://vuejs.org/" "text" "Vue.js is an open-source model–view–viewmodel front-end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and the rest of the active core team members.")
+  (dict "title" "Angular" "link" "https://angular.io/" "text" "Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps.")
+}}
+
+{{/* Custom data from configuration file */}}
+{{ with site.Data.sections.skills }}
+  {{ $skills = slice }}
+  {{ if .title }}{{ $title = .title }}{{ end }}
+  {{ if .project }}{{ $projects = .project }}{{ end }}
+{{ end }}
+
+
+<section class=" text-gray-600">
+  <h2 class="text-center text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-300">
+    {{ $title }}
+  </h2>
+  {{ range $projects }}
+    <div class="mb-9 rounded-xl px-7 p-5 sm:p-9 lg:px-6 xl:px-9 border-b-2 last:border-b-0">
+      <div>
+        <h3 class="mb-4 font-light text-3xl">{{ .title }}</h3>
+        <p class="text-xl font-light">
+          {{ .text }}
+        </p>
+      </div>
+      <div class="mt-5">
+        <a href="{{ .link }}" target="_blank" class="text-blue-500 hover:underline">{{ .link }}</a>
+      </div>
+    </div>
+  {{ end }}
+</section>
