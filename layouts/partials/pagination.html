@@ -1,0 +1,208 @@
+{{- $validFormats := slice "default" "terse" }}
+
+{{- $msg1 := "When passing a map to the internal pagination template, one of the elements must be named 'page', and it must be set to the context of the current page." }}
+{{- $msg2 := "The 'format' specified in the map passed to the internal pagination template is invalid. Valid choices are: %s." }}
+
+{{- $page := . }}
+{{- $format := "default" }}
+
+{{- if reflect.IsMap . }}
+  {{- with .page }}
+    {{- $page = . }}
+  {{- else }}
+    {{- errorf $msg1 }}
+  {{- end }}
+  {{- with .format }}
+    {{- $format = lower . }}
+  {{- end }}
+{{- end }}
+
+{{- if in $validFormats $format }}
+  {{- if gt $page.Paginator.TotalPages 1 }}
+    <nav class="flex justify-center p-10">
+      <ul class="list-style-none flex">
+        {{- partial (printf "partials/inline/pagination/%s" $format) $page }}
+      </ul>
+    </nav>
+  {{- end }}
+{{- else }}
+  {{- errorf $msg2 (delimit $validFormats ", ") }}
+{{- end -}}
+
+{{/* Format: default
+  {{/* ---------------------------------------------------------------------
+*/}}
+{{- define "partials/inline/pagination/default" }}
+  {{- with .Paginator }}
+    {{- $currentPageNumber := .PageNumber }}
+    {{- with .Prev }}
+      <li class="page-item">
+        <a
+          href="{{ .URL }}"
+          aria-label="Previous"
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-gray-50 focus:bg-gray-50 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-gray-50 active:text-primary-700 page-link"
+          role="button">
+          <span aria-hidden="true">←</span>
+        </a>
+      </li>
+    {{- else }}
+      <li class="page-item disabled">
+        <a
+          aria-disabled="true"
+          aria-label="Previous"
+          class="pointer-events-none pointer-events-nonerelative block rounded bg-transparent px-3 py-1.5 text-sm text-surface"
+          role="button"
+          tabindex="-1">
+          <span aria-hidden="true">←</span>
+        </a>
+      </li>
+    {{- end }}
+
+    {{- $slots := 5 }}
+    {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
+    {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}
+    {{- if lt (add (sub $end $start) 1) $slots }}
+      {{- $start = math.Max 1 (add (sub $end $slots) 1) }}
+    {{- end }}
+
+    {{- range $k := seq $start $end }}
+      {{- if eq $.Paginator.PageNumber $k }}
+        <li class="page-item active">
+          <a
+            aria-current="page"
+            aria-label="Page {{ $k }}"
+            class="pointer-events-nonerelative block rounded bg-gray-50 px-3 py-1.5 text-sm text-surface page-link"
+            role="button">
+            {{ $k }}
+          </a>
+        </li>
+      {{- else }}
+        <li class="page-item">
+          <a
+            href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}"
+            aria-label="Page {{ $k }}"
+            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-gray-50 focus:bg-gray-50 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-gray-50 active:text-primary-700 page-link"
+            role="button">
+            {{ $k }}
+          </a>
+        </li>
+      {{- end }}
+    {{- end }}
+
+    {{- with .Next }}
+      <li class="page-item">
+        <a
+          href="{{ .URL }}"
+          aria-label="Next"
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-gray-50 focus:bg-gray-50 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-gray-50 active:text-primary-700 page-link"
+          role="button">
+          <span aria-hidden="true">→</span>
+        </a>
+      </li>
+    {{- else }}
+      <li class="page-item disabled">
+        <a
+          aria-disabled="true"
+          aria-label="Next"
+          class="pointer-events-none pointer-events-nonerelative block rounded bg-transparent px-3 py-1.5 text-sm text-surface"
+          role="button"
+          tabindex="-1">
+          <span aria-hidden="true">→</span>
+        </a>
+      </li>
+    {{- end }}
+
+  {{- end }}
+{{- end -}}
+
+{{/* Format: terse
+  {{/* ---------------------------------------------------------------------
+*/}}
+{{- define "partials/inline/pagination/terse" }}
+  {{- with .Paginator }}
+    {{- $currentPageNumber := .PageNumber }}
+
+    {{- with .First }}
+      {{- if ne $currentPageNumber .PageNumber }}
+        <li class="page-item">
+          <a
+            href="{{ .URL }}"
+            aria-label="First"
+            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 dark:text-gray-50 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500 page-link"
+            role="button">
+            <span aria-hidden="true">&laquo;&laquo;</span>
+          </a>
+        </li>
+      {{- end }}
+    {{- end }}
+
+    {{- with .Prev }}
+      <li class="page-item">
+        <a
+          href="{{ .URL }}"
+          aria-label="Previous"
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 dark:text-gray-50 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500 page-link"
+          role="button">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+    {{- end }}
+
+    {{- $slots := 3 }}
+    {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
+    {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}
+    {{- if lt (add (sub $end $start) 1) $slots }}
+      {{- $start = math.Max 1 (add (sub $end $slots) 1) }}
+    {{- end }}
+
+    {{- range $k := seq $start $end }}
+      {{- if eq $.Paginator.PageNumber $k }}
+        <li class="page-item active">
+          <a
+            aria-current="page"
+            aria-label="Page {{ $k }}"
+            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 dark:text-gray-50 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500 page-link"
+            role="button">
+            {{ $k }}
+          </a>
+        </li>
+      {{- else }}
+        <li class="page-item">
+          <a
+            href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}"
+            aria-label="Page {{ $k }}"
+            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 dark:text-gray-50 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500 page-link"
+            role="button">
+            {{ $k }}
+          </a>
+        </li>
+      {{- end }}
+    {{- end }}
+
+    {{- with .Next }}
+      <li class="page-item">
+        <a
+          href="{{ .URL }}"
+          aria-label="Next"
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 dark:text-gray-50 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500 page-link"
+          role="button">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    {{- end }}
+
+    {{- with .Last }}
+      {{- if ne $currentPageNumber .PageNumber }}
+        <li class="page-item">
+          <a
+            href="{{ .URL }}"
+            aria-label="Last"
+            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 dark:text-gray-50 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500 page-link"
+            role="button">
+            <span aria-hidden="true">&raquo;&raquo;</span>
+          </a>
+        </li>
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end -}}
