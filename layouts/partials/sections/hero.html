@@ -1,12 +1,29 @@
 {{/* Default data */}}
+{{ $title1 := "MANAGER" }}
+{{ $text1 := "I'm Andrew Molyuk and after 25+ years in the tech field, I excel as an accomplished R&D manager, adept at spearheading large-scale projects." }}
+
+{{ $title2 := "ARCHITECT" }}
+{{ $text2 := "Andrew Molyuk" }}
 {{ $avatar := "img/default-avatar.png" }}
-{{ $text := "Andrew Molyuk" }}
+
+{{ $title3 := "ENGINEER" }}
+{{ $text3 := "I addicted to and thrive on hands-on work. Every detail on this website, meticulously crafted by my own hands, reflects my commitment to perfection." }}
+
+{{ $description := "I am a software engineer and manager with a passion for building and leading high-performing teams. I have a strong background in software development, architecture, and project management. I am a results-driven leader with a proven track record of delivering high-quality software solutions on time and within budget." }}
 
 {{/* Custom data from configuration file */}}
+{{ with site.Data.sections.hero }}
+  {{ if .title1 }}{{ $title1 = .title1 }}{{ end }}
+  {{ if .text1 }}{{ $text1 = .text1 }}{{ end }}
 
-{{ with site.Data.hero }}
+  {{ if .title2 }}{{ $title2 = .title2 }}{{ end }}
+  {{ if .text2 }}{{ $text2 = .text2 }}{{ end }}
   {{ if .avatar }}{{ $avatar = .avatar }}{{ end }}
-  {{ if .text }}{{ $text = .text }}{{ end }}
+
+  {{ if .title3 }}{{ $title3 = .title3 }}{{ end }}
+  {{ if .text3 }}{{ $text3 = .text3 }}{{ end }}
+
+  {{ if .description }}{{ $description = .description }}{{ end }}
 {{ end }}
 
 {{ $avatar = (resources.Get $avatar).Resize "150x150" }}
@@ -18,11 +35,10 @@
       <div class="md:flex lg:space-x-5 xl:space-x-10 items-center py-2">
         <div
           class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-center md:text-left text-gray-400 font-poppins pb-5 md:pb-0">
-          MANAGER
+          {{ $title1 }}
         </div>
         <div class="text-lg xl:text-xl text-center font-light sm:font-normal p-2 md:p-10">
-          I'm Andrew Molyuk and after 25+ years in the tech field, I excel as an accomplished R&D manager, adept at
-          spearheading large-scale projects.
+          {{ $text1 }}
         </div>
       </div>
       <div class="md:flex items-center justify-center py-2 space-x-5 xl:space-x-10">
@@ -30,29 +46,26 @@
           <img
             class="w-28 xl:w-36 rounded-full"
             src="{{ $avatar.RelPermalink }}"
-            alt="{{ $text }}"
-            title="{{ $text }}" />
+            alt="{{ $text2 }}"
+            title="{{ $text2 }}" />
         </div>
         <div
           class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-gray-100 font-outline-2 lg:font-outline-3 text-center md:text-right font-poppins py-5 md:py-0">
-          ARCHITECT
+          {{ $title2 }}
         </div>
       </div>
       <div class="md:flex lg:space-x-5 xl:space-x-10 items-center py-2">
         <div class="text-lg xl:text-xl text-center font-light sm:font-normal p-2 md:p-10">
-          I addicted to and thrive on hands-on work. Every detail on this website, meticulously crafted by my own hands,
-          reflects my commitment to perfection.
+          {{ $text3 }}
         </div>
         <div
           class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-gray-600 text-center md:text-right font-poppins py-5 md:py-0">
-          ENGINEER
+          {{ $title3 }}
         </div>
       </div>
     </div>
   </div>
   <div class="text-lg xl:text-xl text-center font-light sm:font-normal p-2 md:p-10">
-    I am a software engineer and manager with a passion for building and leading high-performing teams. I have a strong
-    background in software development, architecture, and project management. I am a results-driven leader with a proven
-    track record of delivering high-quality software solutions on time and within budget.
+    {{ $description }}
   </div>
 </section>

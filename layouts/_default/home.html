@@ -1,10 +1,19 @@
 {{ define "main" }}
-  {{ $sections:= site.Data.sections }}
-  {{ if $sections }}
-    {{ range sort $sections ".weight" }}
-      {{ if .enabled }}
-        {{ partial (printf "sections/%s.html" (replace (lower .id) " " "-")) . }}
-      {{ end }}
+  {{/* Default data */}}
+  {{ $sections := slice (dict "id" "hero" "enabled" true "weight" 1 ) }}
+
+  {{/* Custom data from configuration file */}}
+  {{ with site.Data.home }}
+    {{ if .sections }}
+      {{ $sections = .sections }}
+    {{ else }}
+      {{ $sections = slice }}
+    {{ end }}
+  {{ end }}
+
+  {{ range sort $sections ".weight" }}
+    {{ if .enabled }}
+      {{ partial (printf "sections/%s.html" (replace (lower .id) " " "-")) . }}
     {{ end }}
   {{ end }}
 {{ end }}
