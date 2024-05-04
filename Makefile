@@ -19,7 +19,9 @@ dev:
 @PHONY: dev
 
 build:
+	rm -rf ./public
 	npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --minify
+	hugo --minify
 @PHONY: build
 
 upgrade:
