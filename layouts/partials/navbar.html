@@ -1,10 +1,10 @@
 {{/* Default data */}}
 {{ $logo := "img/default-logo.svg" }}
 {{ $logoLink := "/" }}
-{{ $title := "hugo-porto" }}
+{{ $title := "#hugo-porto" }}
 
 {{ $buttonEnabled := true }}
-{{ $buttonText := "Get my CV" }}
+{{ $buttonText := "Download CV" }}
 {{ $buttonLink := "#" }}
 {{ $buttonTarget := "_blank" }}
 
@@ -41,7 +41,9 @@
     <a href="{{ $logoLink }}">
       <img src="{{ $logo.RelPermalink }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
     </a>
-    <a href="{{ $logoLink }}"><h1 class="text-lg lg:text-xl px-2 lg:px-3">{{ $title }}</h1></a>
+    <a href="{{ $logoLink }}">
+      <h1 class="text-lg lg:text-xl px-2 lg:px-3 font-medium font-poppins">{{ $title }}</h1>
+    </a>
   </div>
   <div class="hidden lg:block">
     <ul class="flex items-center">

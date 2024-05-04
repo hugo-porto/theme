@@ -1,6 +1,9 @@
 {{ define "main" }}
   {{/* Default data */}}
-  {{ $sections := slice (dict "id" "hero" "enabled" true "weight" 1 ) }}
+  {{ $sections := slice
+    (dict "id" "hero" "enabled" true "weight" 1 )
+    (dict "id" "skills" "enabled" true "weight" 2 )
+  }}
 
   {{/* Custom data from configuration file */}}
   {{ with site.Data.home }}

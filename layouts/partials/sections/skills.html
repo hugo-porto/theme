@@ -1,0 +1,34 @@
+{{/* Default data */}}
+{{ $skills := slice
+  (dict "title" "Programming Languages" "icon" "bx-code" "text" "Experienced in programming languages such as Python, JavaScript, Java, and C++. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.")
+  (dict "title" "Web Development" "icon" "bx-code-alt" "text" "Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Angular, and Vue.js. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.")
+  (dict "title" "Backend Development" "icon" "bx-server" "text" "Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.")
+  (dict "title" "CI/CD Pipelines" "icon" "bx-git-branch" "text" "Experienced in setting up CI/CD pipelines using Jenkins, GitHub Actions, and GitLab CI/CD. Proficient in automating build, test, and deployment processes. Well-versed in version control using Git and GitHub.")
+  (dict "title" "Agile Methodologies" "icon" "bxl-trello" "text" "Experienced in working with Agile methodologies such as Scrum and Kanban. Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. Well-versed in using Jira, Trello, and other tools.")
+  (dict "title" "DevOps Practices" "icon" "bxl-dev-to" "text" "Experienced in implementing DevOps practices such as infrastructure as code, configuration management, and monitoring. Proficient in using tools such as Terraform, Ansible, and Prometheus. Well-versed in logging, monitoring, and alerting.")
+}}
+{{/* Custom data from configuration file */}}
+
+
+<section class="text-center text-gray-600">
+  <h2 class="text-4xl md:text-5xl lg:text-7xl p-5 md:pb-10 lg:pb-20 font-medium font-poppins text-gray-300">
+    Do not measure your skills in percentages!
+  </h2>
+  <div class="-mx-5 flex flex-wrap ">
+    {{ range $skills }}
+      <div class="w-full md:w-1/2 lg:w-1/3">
+        <div class="mb-9 rounded-xl px-7 sm:p-9 lg:px-6 xl:px-9">
+          <div class="mx-auto inline-block ">
+            <i class="text-5xl bx {{ .icon }}"></i>
+          </div>
+          <div>
+            <h3 class="mb-4 text-lg font-medium font-poppins sm:text-xl lg:text-lg xl:text-xl">{{ .title }}</h3>
+            <p class="text-base font-medium text-body-color">
+              {{ .text }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>
