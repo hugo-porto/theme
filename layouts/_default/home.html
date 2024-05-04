@@ -4,10 +4,9 @@
 
   {{/* Custom data from configuration file */}}
   {{ with site.Data.home }}
+    {{ $sections = slice }}
     {{ if .sections }}
       {{ $sections = .sections }}
-    {{ else }}
-      {{ $sections = slice }}
     {{ end }}
   {{ end }}
 

@@ -1,9 +1,18 @@
 {{/* Default values */}}
-{{ $social := slice }}
+{{ $socials := slice
+  (dict "type" "linkedin" "id" "johndoe")
+  (dict "type" "github" "id" "johndoe")
+  (dict "type" "facebook" "id" "johndoe")
+  (dict "type" "twitter" "id" "johndoe")
+  (dict "type" "telegram" "id" "johndoe")
+}}
 
 {{/* Custom data from configuration file */}}
 {{ with site.Data.footer }}
-  {{ if .social }}{{ $social = .social }}{{ end }}
+  {{ $socials = slice }}
+  {{ if .social }}
+    {{ $socials = .social }}
+  {{ end }}
 {{ end }}
 
 {{ $map := dict
@@ -23,7 +32,7 @@
 
 <div class=" text-center">
   <div class="flex flex-wrap items-center justify-center">
-    {{ range $social }}
+    {{ range $socials }}
       {{ $id := .id }}
       {{ range $link, $icon := (index $map .type) }}
         <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bxl-{{ $icon }} text-2xl"></i></a>
