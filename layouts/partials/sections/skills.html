@@ -1,5 +1,5 @@
 {{/* Default data */}}
-{{ $title := "Do not measure your skills in percentages!" }}
+{{ $title := "Don't measure your skills in percentages" }}
 {{ $skills := slice
   (dict "title" "Programming Languages" "icon" "bx-code" "text" "Experienced in programming languages such as Python, JavaScript, Java, and C++. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.")
   (dict "title" "Web Development" "icon" "bx-code-alt" "text" "Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Angular, and Vue.js. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.")
@@ -18,19 +18,19 @@
 
 
 <section class="text-center text-gray-600">
-  <h2 class="text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-300">
+  <h2 class="text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-400">
     {{ $title }}
   </h2>
   <div class="-mx-5 flex flex-wrap ">
     {{ range $skills }}
       <div class="w-full md:w-1/2 lg:w-1/3 p-5">
-        <div class="mb-9 rounded-xl px-7 sm:p-9 lg:px-6 xl:px-9 bg-gray-50">
-          <div class="mx-auto inline-block">
+        <div class="mb-9 rounded-xl p-7 sm:p-9 lg:px-6 xl:px-9 bg-gray-50">
+          <div class="mx-auto pb-5 inline-block">
             <i class="text-4xl bx {{ .icon }}"></i>
           </div>
           <div>
-            <h3 class="mb-4 text-lg font-medium font-poppins sm:text-xl lg:text-lg xl:text-xl">{{ .title }}</h3>
-            <p class="text-xl font-light">
+            <h3 class="mb-4 text-lg font-medium sm:text-xl lg:text-lg xl:text-xl">{{ .title }}</h3>
+            <p class="text-lg font-light">
               {{ .text }}
             </p>
           </div>

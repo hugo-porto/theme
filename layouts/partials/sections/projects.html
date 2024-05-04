@@ -7,15 +7,15 @@
 }}
 
 {{/* Custom data from configuration file */}}
-{{ with site.Data.sections.skills }}
-  {{ $skills = slice }}
+{{ with site.Data.sections.projects }}
+  {{ $projects = slice }}
   {{ if .title }}{{ $title = .title }}{{ end }}
   {{ if .project }}{{ $projects = .project }}{{ end }}
 {{ end }}
 
 
 <section class=" text-gray-600">
-  <h2 class="text-center text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-300">
+  <h2 class="text-center text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-400">
     {{ $title }}
   </h2>
   {{ range $projects }}
