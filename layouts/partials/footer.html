@@ -1,5 +1,6 @@
 {{/* Default values */}}
-{{ $copyright := printf "© 2001-%d John Doe" now.Year }}
+{{ $author := or site.Params.Author.name (or site.Author.name "John Doe") }}
+{{ $copyright := printf "© 2001-%d %s" now.Year $author }}
 
 {{/* Custom data from configuration file */}}
 {{ with site.Data.footer }}
@@ -9,6 +10,8 @@
 {{ partial "footer/socials.html" }}
 
 
-<div class="pb-5 text-center">
-  <div>{{ $copyright }}</div>
+<div class="pb-5 text-center text-base">
+  <div title="Hugo Porto v{{ trim (partial "footer/version.html") "\n\r " }}">
+    {{ $copyright }}
+  </div>
 </div>
