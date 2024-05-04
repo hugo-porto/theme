@@ -2,16 +2,30 @@
 {{ $logo := "img/default-logo.svg" }}
 {{ $logoLink := "/" }}
 {{ $title := "hugo-porto" }}
+{{ $button := "Get my CV" }}
+{{ $buttonLink := "#" }}
+{{ $buttonTarget := "_blank" }}
 
-{{ $menu := slice }}
+{{ $menu := slice
+  (dict "link" "/" "target" "_self" "text" "Home" "description" "Navigate to home page")
+  (dict "link" "/posts" "target" "_self" "text" "Posts" "description" "Navigate to posts section")
+  (dict "link" "https://google.com/" "target" "_blank" "text" "Google" "description" "Navigate to Google")
+}}
+
+{{ if eq $buttonLink "#" }}
+  {{ $buttonLink = (resources.Get "/files/cv.pdf").RelPermalink }}
+{{ end }}
 
 {{/* Custom data from configuration file */}}
 {{ with site.Data.navbar }}
+  {{ $menu = slice }}
   {{ if .menu }}{{ $menu = .menu }}{{ end }}
   {{ if .title }}{{ $title = .title }}{{ end }}
   {{ if .logo }}{{ $logo = .logo }}{{ end }}
   {{ if .site.BaseURL }}{{ $logoLink = .site.BaseURL }}{{ end }}
-
+  {{ if .button }}{{ $button = .button }}{{ end }}
+  {{ if .buttonLink }}{{ $buttonLink = .buttonLink }}{{ end }}
+  {{ if .buttonTarget }}{{ $buttonTarget = .buttonTarget }}{{ end }}
 {{ end }}
 
 {{ $logo = (resources.Get $logo) }}
@@ -39,10 +53,10 @@
         </li>
       {{ end }}
       <li class="px-5">
-        <a href="/files/Andrew Molyuk.pdf" target="_blank">
+        <a href="{{ $buttonLink }}" target="{{ $buttonTarget }}">
           <button
             class="px-10 py-4 bg-white hover:bg-gray-600 hover:text-white rounded-lg font-normal text-base transition duration-300">
-            Get my CV
+            {{ $button }}
           </button>
         </a>
       </li>
