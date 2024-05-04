@@ -1,6 +1,6 @@
 {{/* Default data */}}
 {{ $title := "Educational journey" }}
-{{ $skills := slice
+{{ $educations := slice
   (dict "title" "University" "date" "2015 - 2020" "text" "Graduated with a Bachelor's degree in Computer Science. Specialized in software engineering, web development, and data science. Completed a thesis on machine learning algorithms for image recognition.")
   (dict "title" "High School" "date" "2005 - 2015" "text" "Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Angular, and Vue.js. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.")
   (dict "title" "Kindergarten" "date" "2000 - 2005" "text" "Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.")
@@ -10,7 +10,7 @@
 {{ with site.Data.sections.skills }}
   {{ $skills = slice }}
   {{ if .title }}{{ $title = .title }}{{ end }}
-  {{ if .skill }}{{ $skills = .skill }}{{ end }}
+  {{ if .education }}{{ $educations = .education }}{{ end }}
 {{ end }}
 
 
@@ -19,7 +19,7 @@
     {{ $title }}
   </h2>
   <div class="-mx-5 flex flex-wrap ">
-    {{ range $skills }}
+    {{ range $educations }}
       <div class="w-full md:w-1/2 lg:w-1/3 p-5">
         <div class="mb-9 rounded-xl px-7 sm:p-9 lg:px-6 xl:px-9 bg-gray-50">
           <div>
