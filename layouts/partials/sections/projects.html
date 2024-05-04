@@ -1,9 +1,9 @@
 {{/* Default data */}}
 {{ $title := "Backing of Open Source" }}
 {{ $projects := slice
-  (dict "title" "React.js" "link" "https://reactjs.org/" "text" "React is a JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.")
-  (dict "title" "Vue.js" "link" "https://vuejs.org/" "text" "Vue.js is an open-source model–view–viewmodel front-end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and the rest of the active core team members.")
-  (dict "title" "Angular" "link" "https://angular.io/" "text" "Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps.")
+  (dict "title" "React.js" "link" "https://reactjs.org/" "text" ( slice "React is a JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications." "React allows developers to create large web applications that can change data, without reloading the page. The main purpose of React is to be fast, scalable, and simple." "React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called components."))
+  (dict "title" "Vue.js" "link" "https://vuejs.org/" "text" ( slice "Vue.js is an open-source model–view–viewmodel front-end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You and is maintained by him and the rest of the active core team members." "Vue.js is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only and is easy to pick up and integrate with other libraries or existing projects." "Vue.js is a progressive framework for building user interfaces. The core library is focused on the view layer only and is easy to pick up and integrate with other libraries or existing projects."))
+  (dict "title" "Angular" "link" "https://angular.io/" "text" ( slice "Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps." "Consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps." "Angular is a platform and framework for building single-page client applications using HTML and TypeScript. Angular is written in TypeScript. It implements core and optional functionality as a set of TypeScript libraries that you import into your apps."))
 }}
 
 {{/* Custom data from configuration file */}}
@@ -19,12 +19,14 @@
     {{ $title }}
   </h2>
   {{ range $projects }}
-    <div class="mb-9 rounded-xl px-7 p-5 sm:p-9 lg:px-6 xl:px-9 border-b-2 last:border-b-0">
+    <div class="mb-9 px-7 p-5 sm:p-9 lg:px-6 xl:px-9 border-b-2 border-gray-300 last:border-b-0">
       <div>
         <h3 class="mb-4 font-light text-3xl">{{ .title }}</h3>
-        <p class="text-xl font-light">
-          {{ .text }}
-        </p>
+        {{ range .text }}
+          <p class="md:pl-10 py-2 text-xl font-light">
+            {{ . }}
+          </p>
+        {{ end }}
       </div>
       <div class="mt-5">
         <a href="{{ .link }}" target="_blank" class="text-blue-500 hover:underline">{{ .link }}</a>
