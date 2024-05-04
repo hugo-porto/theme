@@ -2,8 +2,10 @@
 {{ $logo := "img/default-logo.svg" }}
 {{ $logoLink := "/" }}
 {{ $title := "hugo-porto" }}
-{{ $button := "Get my CV" }}
-{{ $buttonLink := "/files/cv.pdf" }}
+
+{{ $buttonEnabled := true }}
+{{ $buttonText := "Get my CV" }}
+{{ $buttonLink := "#" }}
 {{ $buttonTarget := "_blank" }}
 
 {{ $menu := slice
@@ -15,18 +17,23 @@
 {{/* Custom data from configuration file */}}
 {{ with site.Data.navbar }}
   {{ $menu = slice }}
-  {{ $button = "" }}
+  {{ $buttonEnabled = false }}
   {{ if .menu }}{{ $menu = .menu }}{{ end }}
   {{ if .title }}{{ $title = .title }}{{ end }}
   {{ if .logo }}{{ $logo = .logo }}{{ end }}
   {{ if .site.BaseURL }}{{ $logoLink = .site.BaseURL }}{{ end }}
-  {{ if .button }}{{ $button = .button }}{{ end }}
-  {{ if .buttonLink }}{{ $buttonLink = .buttonLink }}{{ end }}
-  {{ if .buttonTarget }}{{ $buttonTarget = .buttonTarget }}{{ end }}
+  {{ if .button }}
+    {{ if .button.enabled }}{{ $buttonEnabled = .button.enabled }}{{ end }}
+    {{ if .button.text }}{{ $buttonText = .button.text }}{{ end }}
+    {{ if .button.link }}{{ $buttonLink = .button.link }}{{ end }}
+    {{ if .button.target }}{{ $buttonTarget = .button.target }}{{ end }}
+  {{ end }}
 {{ end }}
 
 {{ $logo = (resources.Get $logo) }}
-{{ $buttonLink = (resources.Get $buttonLink).RelPermalink }}
+{{ if eq $buttonLink "#" }}
+  {{ $buttonLink = (resources.Get "/files/cv.pdf").RelPermalink }}
+{{ end }}
 
 
 <div class="flex items-center justify-between py-5">
@@ -50,12 +57,12 @@
           </a>
         </li>
       {{ end }}
-      {{ if $button }}
+      {{ if $buttonEnabled }}
         <li class="px-5">
           <a href="{{ $buttonLink }}" target="{{ $buttonTarget }}">
             <button
               class="px-10 py-4 bg-white hover:bg-gray-600 hover:text-white rounded-lg font-normal text-base transition duration-300">
-              {{ $button }}
+              {{ $buttonText }}
             </button>
           </a>
         </li>
