@@ -3,22 +3,19 @@
 {{ $logoLink := "/" }}
 {{ $title := "hugo-porto" }}
 {{ $button := "Get my CV" }}
-{{ $buttonLink := "#" }}
+{{ $buttonLink := "/files/cv.pdf" }}
 {{ $buttonTarget := "_blank" }}
 
 {{ $menu := slice
   (dict "link" "/" "target" "_self" "text" "Home" "description" "Navigate to home page")
   (dict "link" "/posts" "target" "_self" "text" "Posts" "description" "Navigate to posts section")
-  (dict "link" "https://google.com/" "target" "_blank" "text" "Google" "description" "Navigate to Google")
+  (dict "link" "/tags" "target" "_self" "text" "Posts" "description" "Navigate to tags section")
 }}
-
-{{ if eq $buttonLink "#" }}
-  {{ $buttonLink = (resources.Get "/files/cv.pdf").RelPermalink }}
-{{ end }}
 
 {{/* Custom data from configuration file */}}
 {{ with site.Data.navbar }}
   {{ $menu = slice }}
+  {{ $button = "" }}
   {{ if .menu }}{{ $menu = .menu }}{{ end }}
   {{ if .title }}{{ $title = .title }}{{ end }}
   {{ if .logo }}{{ $logo = .logo }}{{ end }}
@@ -29,6 +26,7 @@
 {{ end }}
 
 {{ $logo = (resources.Get $logo) }}
+{{ $buttonLink = (resources.Get $buttonLink).RelPermalink }}
 
 
 <div class="flex items-center justify-between py-5">
@@ -52,14 +50,16 @@
           </a>
         </li>
       {{ end }}
-      <li class="px-5">
-        <a href="{{ $buttonLink }}" target="{{ $buttonTarget }}">
-          <button
-            class="px-10 py-4 bg-white hover:bg-gray-600 hover:text-white rounded-lg font-normal text-base transition duration-300">
-            {{ $button }}
-          </button>
-        </a>
-      </li>
+      {{ if $button }}
+        <li class="px-5">
+          <a href="{{ $buttonLink }}" target="{{ $buttonTarget }}">
+            <button
+              class="px-10 py-4 bg-white hover:bg-gray-600 hover:text-white rounded-lg font-normal text-base transition duration-300">
+              {{ $button }}
+            </button>
+          </a>
+        </li>
+      {{ end }}
     </ul>
   </div>
 
