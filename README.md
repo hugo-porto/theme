@@ -10,7 +10,6 @@ yet powerful online portfolio.
 
 - **Responsive Design**: The theme is fully responsive and works on all devices, including smartphones, tablets, and
   desktops.
-- **Dark Mode**: The theme includes a dark mode that can be toggled on or off by the user.
 - **Customizable**: The theme is highly customizable and allows you to configure various aspects of your website.
 - **Lightweight**: The theme is lightweight and optimized for performance, ensuring fast load times.
 - **SEO Friendly**: The theme is SEO friendly and includes meta tags and structured data to help search engines index
@@ -31,15 +30,19 @@ theme.
 Features planned to implement in the nearest future:
 
 - Opengraph and SEO meta information
-- Posts support
 - Default mock data to easy install and implementaton
-- Generator of configuration files
+- More configuration options
+- More examples and documentation
+- Dark mode switcher
+
+If you have any suggestions or feature requests, please open an issue on the GitHub repository. I would love to hear
+your feedback and ideas for improving the theme.
 
 ## Demo
 
-~~For a live demonstration of the theme in action, please visit the demo website at
+For a live demonstration of the theme in action, please visit the demo website at
 [https://hugo-porto.netlify.app/](https://hugo-porto.netlify.app/). This demo site showcases all the features and design
-elements that the Hugo Porto theme has to offer, providing a comprehensive overview of its capabilities.~~
+elements that the Hugo Porto theme has to offer, providing a comprehensive overview of its capabilities.
 
 You can find the source code for the demo website at
 [https://github.com/hugo-porto/web](https://github.com/hugo-porto/web).
