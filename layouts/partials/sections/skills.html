@@ -1,4 +1,5 @@
 {{/* Default data */}}
+{{ $title := "Do not measure your skills in percentages!" }}
 {{ $skills := slice
   (dict "title" "Programming Languages" "icon" "bx-code" "text" "Experienced in programming languages such as Python, JavaScript, Java, and C++. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.")
   (dict "title" "Web Development" "icon" "bx-code-alt" "text" "Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Angular, and Vue.js. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.")
@@ -7,12 +8,18 @@
   (dict "title" "Agile Methodologies" "icon" "bxl-trello" "text" "Experienced in working with Agile methodologies such as Scrum and Kanban. Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. Well-versed in using Jira, Trello, and other tools.")
   (dict "title" "DevOps Practices" "icon" "bxl-dev-to" "text" "Experienced in implementing DevOps practices such as infrastructure as code, configuration management, and monitoring. Proficient in using tools such as Terraform, Ansible, and Prometheus. Well-versed in logging, monitoring, and alerting.")
 }}
+
 {{/* Custom data from configuration file */}}
+{{ with site.Data.sections.skills }}
+  {{ $skills = slice }}
+  {{ if .title }}{{ $title = .title }}{{ end }}
+  {{ if .skill }}{{ $skills = .skill }}{{ end }}
+{{ end }}
 
 
 <section class="text-center text-gray-600">
   <h2 class="text-4xl md:text-5xl lg:text-7xl p-5 md:pb-10 lg:pb-20 font-medium font-poppins text-gray-300">
-    Do not measure your skills in percentages!
+    {{ $title }}
   </h2>
   <div class="-mx-5 flex flex-wrap ">
     {{ range $skills }}

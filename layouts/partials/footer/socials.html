@@ -10,9 +10,7 @@
 {{/* Custom data from configuration file */}}
 {{ with site.Data.footer }}
   {{ $socials = slice }}
-  {{ if .social }}
-    {{ $socials = .social }}
-  {{ end }}
+  {{ if .social }}{{ $socials = .social }}{{ end }}
 {{ end }}
 
 {{ $map := dict

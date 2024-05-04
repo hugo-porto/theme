@@ -8,9 +8,7 @@
   {{/* Custom data from configuration file */}}
   {{ with site.Data.home }}
     {{ $sections = slice }}
-    {{ if .sections }}
-      {{ $sections = .sections }}
-    {{ end }}
+    {{ if .sections }}{{ $sections = .sections }}{{ end }}
   {{ end }}
 
   {{ range sort $sections ".weight" }}
