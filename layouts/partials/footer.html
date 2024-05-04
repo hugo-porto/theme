@@ -1,6 +1,6 @@
 {{/* Default values */}}
 {{ $author := or site.Params.Author.name (or site.Author.name "John Doe") }}
-{{ $copyright := printf "© 2001-%d %s" now.Year $author }}
+{{ $copyright := printf "© %d %s" now.Year $author }}
 
 {{/* Custom data from configuration file */}}
 {{ with site.Data.footer }}
