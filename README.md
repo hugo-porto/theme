@@ -6,6 +6,22 @@ Hugo Porto is a personal portfolio theme for Hugo. It features a minimalist desi
 projects and achievements. This theme is perfect for developers, designers, and creatives who want to create a simple
 yet powerful online portfolio.
 
+The theme is under active development, and new features are being added regularly. If you have any suggestions or
+feature requests, please open an [issue](https://github.com/hugo-porto/theme/issues) on the GitHub repository. I would
+love to hear your feedback and ideas for improving the theme.
+
+## Screenshots
+
+![Screenshot](https://raw.githubusercontent.com/hugo-porto/theme/main/images/screenshot.png)
+
+![Skills](https://raw.githubusercontent.com/hugo-porto/theme/main/images/skills.png)
+
+![Experience](https://raw.githubusercontent.com/hugo-porto/theme/main/images/experience.png)
+
+![Custom](https://raw.githubusercontent.com/hugo-porto/theme/main/images/custom.png)
+
+![Posts](https://raw.githubusercontent.com/hugo-porto/theme/main/images/posts.png)
+
 ## Features
 
 - **Responsive Design**: The theme is fully responsive and works on all devices, including smartphones, tablets, and
@@ -46,6 +62,10 @@ elements that the Hugo Porto theme has to offer, providing a comprehensive overv
 
 You can find the source code for the demo website at
 [https://github.com/hugo-porto/web](https://github.com/hugo-porto/web).
+
+In addition, you can find a real-world example of the theme in action on my personal website at
+https://andrew.molyuk.com. The source code for my website is available at
+[https://github.com/andrewmolyuk/andrew.molyuk.com](https://github.com/andrewmolyuk/andrew.molyuk.com)
 
 ## Prerequisites
 
@@ -105,6 +125,15 @@ If you want to install the theme from scratch using Hugo modules, follow these s
 
 8. Now you have to add configuration files to your data folder according your needs. You can see example files at
    [https://github.com/hugo-porto/web/tree/main/data](https://github.com/hugo-porto/web/tree/main/data).
+
+## Real-world usage
+
+If you want to see a real-world example of the theme in action, you can check out the following websites:
+
+- [andrew.molyuk.com](https://andrew.molyuk.com) - my personal website, which uses the Hugo Porto theme.
+
+If you are using the Hugo Porto theme on your website and would like to be featured here, please let me know. I would be
+happy to include your website in the list of real-world examples.
 
 ## Configuration
 
