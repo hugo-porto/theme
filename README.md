@@ -64,7 +64,7 @@ You can find the source code for the demo website at
 [https://github.com/hugo-porto/web](https://github.com/hugo-porto/web).
 
 In addition, you can find a real-world example of the theme in action on my personal website at
-https://andrew.molyuk.com. The source code for my website is available at
+[https://andrew.molyuk.com](https://andrew.molyuk.com). The source code for my website is available at
 [https://github.com/andrewmolyuk/andrew.molyuk.com](https://github.com/andrewmolyuk/andrew.molyuk.com)
 
 ## Prerequisites
