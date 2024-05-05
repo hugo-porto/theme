@@ -152,4 +152,5 @@ I appreciate any contributions and would like to thank you in advance for your s
 
 ## License
 
-This theme is distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+This theme is distributed under the MIT License. See
+[LICENSE](https://raw.githubusercontent.com/hugo-porto/theme/main/LICENSE) for more information.
