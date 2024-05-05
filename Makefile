@@ -24,6 +24,11 @@ build:
 	hugo --minify
 @PHONY: build
 
+bump:
+	npm version patch --no-git-tag-version
+	cat package.json | jq '.version' | xargs -I {} echo {} > layouts/partials/footer/version.html
+@PHONY: bump
+
 upgrade:
 	npm -g ls npm-check-updates | grep -c npm-check-updates || npm install -g npm-check-updates 
 	ncu -u &&	npm install --no-fund --no-audit
