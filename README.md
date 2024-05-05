@@ -1,8 +1,8 @@
-# theme
+# hugo-porto theme
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/de8777e0fd0249d480a92da2dda5863d)](https://app.codacy.com/gh/hugo-porto/theme/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
-Hugo Porto is a personal portfolio theme for Hugo. It features a minimalist design that focuses on showcasing your
+The `hugo-porto` is a personal portfolio theme for Hugo. It features a minimalist design that focuses on showcasing your
 projects and achievements. This theme is perfect for developers, designers, and creatives who want to create a simple
 yet powerful online portfolio.
 
@@ -58,7 +58,7 @@ your feedback and ideas for improving the theme.
 
 For a live demonstration of the theme in action, please visit the demo website at
 [https://hugo-porto.netlify.app/](https://hugo-porto.netlify.app/). This demo site showcases all the features and design
-elements that the Hugo Porto theme has to offer, providing a comprehensive overview of its capabilities.
+elements that the `hugo-porto` theme has to offer, providing a comprehensive overview of its capabilities.
 
 You can find the source code for the demo website at
 [https://github.com/hugo-porto/web](https://github.com/hugo-porto/web).
@@ -101,7 +101,7 @@ If you want to install the theme from scratch using Hugo modules, follow these s
    hugo mod init github.com/<your username>/<your repo name>
    ```
 
-5. Add the Hugo Porto theme as a Hugo module in your configuration file:
+5. Add the `hugo-porto` theme as a Hugo module in your configuration file:
 
    ```toml
    [module]
@@ -128,17 +128,17 @@ If you want to install the theme from scratch using Hugo modules, follow these s
 
 ## Configuration
 
-The Hugo Porto theme is highly customizable and allows you to configure various aspects of your website. The possible
+The `hugo-porto` theme is highly customizable and allows you to configure various aspects of your website. The possible
 configuration options will be described in the nearest future.
 
 ## Real-world usage
 
 If you want to see a real-world example of the theme in action, you can check out the following websites:
 
-- [andrew.molyuk.com](https://andrew.molyuk.com) - my personal website, which uses the Hugo Porto theme.
+- [andrew.molyuk.com](https://andrew.molyuk.com) - my personal website, which uses the `hugo-porto` theme.
 
-If you are using the Hugo Porto theme on your website and would like to be featured here, please let me know. I would be
-happy to include your website in the list of real-world examples.
+If you are using the `hugo-porto` theme on your website and would like to be featured here, please let me know. I would
+be happy to include your website in the list of real-world examples.
 
 ## Contributing
 
