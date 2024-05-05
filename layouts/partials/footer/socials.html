@@ -33,7 +33,7 @@
     {{ range $socials }}
       {{ $id := .id }}
       {{ range $link, $icon := (index $map .type) }}
-        <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bxl-{{ $icon }} text-2xl"></i></a>
+        <a href="{{ printf $link $id }}" target="_blank" class="p-5"><i class="bx bxl-{{ $icon }} text-3xl"></i></a>
       {{ end }}
     {{ end }}
   </div>
