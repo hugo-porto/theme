@@ -126,6 +126,11 @@ If you want to install the theme from scratch using Hugo modules, follow these s
 8. Now you have to add configuration files to your data folder according your needs. You can see example files at
    [https://github.com/hugo-porto/web/tree/main/data](https://github.com/hugo-porto/web/tree/main/data).
 
+## Configuration
+
+The Hugo Porto theme is highly customizable and allows you to configure various aspects of your website. The possible
+configuration options will be described in the nearest future.
+
 ## Real-world usage
 
 If you want to see a real-world example of the theme in action, you can check out the following websites:
@@ -134,11 +139,6 @@ If you want to see a real-world example of the theme in action, you can check ou
 
 If you are using the Hugo Porto theme on your website and would like to be featured here, please let me know. I would be
 happy to include your website in the list of real-world examples.
-
-## Configuration
-
-The Hugo Porto theme is highly customizable and allows you to configure various aspects of your website. The possible
-configuration options will be described in the future.
 
 ## Contributing
 
