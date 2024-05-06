@@ -17,23 +17,21 @@
 {{ end }}
 
 
-<section class="text-gray-600">
-  <h2 class="text-center pb-5 text-4xl md:text-5xl lg:text-7xl font-medium font-poppins text-gray-400">
-    {{ $title }}
-  </h2>
-  <div class="-mx-5 flex flex-wrap py-5">
-    {{ range $testimonials }}
-      <div class="w-full md:w-1/2 lg:w-1/3 px-5">
-        <div class="mb-9 rounded-xl p-7 sm:p-9 lg:px-6 xl:px-9 bg-gray-50">
-          <div>
-            <p class="text-lg font-light">
-              {{ .text }}
-            </p>
-            <div class="text-md mt-5 font-medium text-right">{{ .name }}</div>
-            <div class="text-base text-gray-400 font-light text-right">{{ .role }}</div>
-          </div>
+<h2 class="text-center pb-5 text-4xl md:text-5xl lg:text-7xl font-medium font-poppins text-gray-400">
+  {{ $title }}
+</h2>
+<div class="-mx-5 flex flex-wrap py-5 text-gray-600">
+  {{ range $testimonials }}
+    <div class="w-full md:w-1/2 lg:w-1/3 px-5">
+      <div class="mb-9 rounded-xl p-7 sm:p-9 lg:px-6 xl:px-9 bg-gray-50">
+        <div>
+          <p class="text-lg font-light">
+            {{ .text }}
+          </p>
+          <div class="text-md mt-5 font-medium text-right">{{ .name }}</div>
+          <div class="text-base text-gray-400 font-light text-right">{{ .role }}</div>
         </div>
       </div>
-    {{ end }}
-  </div>
-</section>
+    </div>
+  {{ end }}
+</div>

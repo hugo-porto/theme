@@ -17,7 +17,9 @@
 
   {{ range sort $sections ".weight" }}
     {{ if .enabled }}
-      {{ partial (printf "sections/%s.html" (replace (lower .id) " " "-")) . }}
+      <section id="{{ .id }}">
+        {{ partial (printf "sections/%s.html" (replace (lower .id) " " "-")) . }}
+      </section>
     {{ end }}
   {{ end }}
 {{ end }}

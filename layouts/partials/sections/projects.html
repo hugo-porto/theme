@@ -14,23 +14,21 @@
 {{ end }}
 
 
-<section class=" text-gray-600">
-  <h2 class="text-center text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-400">
-    {{ $title }}
-  </h2>
-  {{ range $projects }}
-    <div class="mb-9 px-7 p-5 sm:p-9 lg:px-6 xl:px-9 border-b-2 border-gray-300 last:border-b-0">
-      <div>
-        <h3 class="mb-4 font-light text-3xl">{{ .title }}</h3>
-        {{ range .text }}
-          <p class="md:pl-10 py-2 text-xl font-light">
-            {{ . }}
-          </p>
-        {{ end }}
-      </div>
-      <div class="mt-5">
-        <a href="{{ .link }}" target="_blank" class="text-blue-500 hover:underline">{{ .link }}</a>
-      </div>
+<h2 class="text-center text-4xl md:text-5xl lg:text-7xl p-5 font-medium font-poppins text-gray-400">
+  {{ $title }}
+</h2>
+{{ range $projects }}
+  <div class="mb-9 px-7 p-5 sm:p-9 lg:px-6 xl:px-9 border-b-2 border-gray-300 last:border-b-0 text-gray-600">
+    <div>
+      <h3 class="mb-4 font-light text-3xl">{{ .title }}</h3>
+      {{ range .text }}
+        <p class="md:pl-10 py-2 text-xl font-light">
+          {{ . }}
+        </p>
+      {{ end }}
     </div>
-  {{ end }}
-</section>
+    <div class="mt-5">
+      <a href="{{ .link }}" target="_blank" class="text-blue-500 hover:underline">{{ .link }}</a>
+    </div>
+  </div>
+{{ end }}
