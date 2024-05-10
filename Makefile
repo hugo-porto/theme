@@ -40,6 +40,7 @@ release: build
 	git add package-lock.json
 	git add layouts/partials/footer/version.html
 	git commit -m "Release $(RELEASE)"
+	git push
 	gh release create $(RELEASE) --title 'Release $(RELEASE)' --notes-file release/$(RELEASE).md
 	git fetch --tags
 .PHONY: release
