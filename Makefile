@@ -1,6 +1,10 @@
 .DEFAULT_GOAL: build
 .SILENT:
 
+VERSION := 0.1
+BUILD := $(shell expr $(shell git describe --tag | (cut -d'.' -f3) | (cut -d'-' -f1)) + 1)
+RELEASE := v$(VERSION).$(BUILD)
+
 lint:
 	markdownlint '**/*.md' --ignore node_modules
 	stylelint '**/*.scss'
@@ -33,3 +37,8 @@ upgrade:
 	npm -g ls npm-check-updates | grep -c npm-check-updates || npm install -g npm-check-updates 
 	ncu -u &&	npm install --no-fund --no-audit
 @PHONY: upgrade
+
+release:
+	gh release create $(RELEASE) --title 'Release $(RELEASE)' --notes-file release/$(RELEASE).md
+	git fetch --tags
+.PHONY: release
