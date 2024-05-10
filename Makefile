@@ -22,23 +22,24 @@ dev:
 	make -j 2 dev-tailwind dev-hugo 
 @PHONY: dev
 
-build:
+build: lint
 	rm -rf ./public
 	npx tailwindcss -i ./assets/css/tailwind.scss -o ./static/css/tailwind.css --minify
 	hugo --minify
 @PHONY: build
-
-bump:
-	npm version patch --no-git-tag-version
-	cat package.json | jq '.version' | xargs -I {} echo {} > layouts/partials/footer/version.html
-@PHONY: bump
 
 upgrade:
 	npm -g ls npm-check-updates | grep -c npm-check-updates || npm install -g npm-check-updates 
 	ncu -u &&	npm install --no-fund --no-audit
 @PHONY: upgrade
 
-release:
+release: build
+	npm version --no-git-tag-version $(RELEASE)
+	echo $(VERSION).$(BUILD) > layouts/partials/footer/version.html
+	git add package.json
+	git add package-lock.json
+	git add layouts/partials/footer/version.html
+	git commit -m "Release $(RELEASE)"
 	gh release create $(RELEASE) --title 'Release $(RELEASE)' --notes-file release/$(RELEASE).md
 	git fetch --tags
 .PHONY: release
