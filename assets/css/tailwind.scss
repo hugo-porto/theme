@@ -45,6 +45,10 @@
     a {
       @apply text-blue-500 hover:text-blue-700 hover:underline;
     }
+
+    blockquote {
+      @apply border-l-4 border-gray-500 bg-gray-100 p-2 my-5;
+    }
   }
 
   .post-content {
@@ -85,6 +89,9 @@
 
     pre code {
       @apply bg-transparent;
+    }
+    blockquote {
+      @apply border-l-4 border-gray-500 bg-gray-100 p-2 my-5;
     }
   }
 }
