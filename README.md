@@ -128,8 +128,104 @@ If you want to install the theme from scratch using Hugo modules, follow these s
 
 ## Configuration
 
-The `hugo-porto` theme is highly customizable and allows you to configure various aspects of your website. The possible
-configuration options will be described in the nearest future.
+The `hugo-porto` theme is highly customizable and allows you to configure various aspects of your website.
+
+You can find the configuration files in the `data` folder of the sample repository. You can adjust any setting to suit
+your needs. So here is a list and the customizable content of the of configuration data files:
+
+### `data/home.toml`
+
+This file define the order of the sections on the home page. You can add or remove sections and change the order of the
+sections.
+
+```toml
+[[section]]
+  id      = "hero"
+  enabled = true
+  weight  = 1
+
+...
+
+[[section]]
+  id      = "testimonials"
+  enabled = true
+  weight  = 6
+```
+
+Each section has three properties:
+
+- `id` is the unique identifier of the section and should match the filename of the section template. For example, the
+  `hero` section id corresponds to the `data/sections/hero.toml` configuration file.
+- `enabled` is a boolean value to enable or disable the section.
+- `weight` is the order of the section.
+
+### `data/footer.toml`
+
+This file contains the footer configuration. You can add your social media links and other information here.
+
+```toml
+[[social]]
+  type = "github"
+  url  = "add your GitHub profile link here"
+```
+
+The `social` section contains the following properties:
+
+- `type` is the name of the social media platform. The following values allowed:
+  - `facebook`
+  - `linkedin`
+  - `github`
+  - `instagram`
+  - `youtube`
+  - `dribbble`
+  - `behance`
+  - `medium`
+  - `telegram`
+  - `whatsapp`
+
+- `id`: is the profile id or username on the social media platform.
+
+### `data/navbar.toml`
+
+This file contains the navigation bar configuration. You can add or remove menu items here.
+
+```toml
+[[menu]]
+  text        = "Home"
+  description = "Welcome to my personal website"
+  link        = "/"
+  target      = "_self"
+```
+
+The `menu` section contains the following properties:
+
+- `text` is the text of the menu item.
+- `description` is the description of the menu item.
+- `link` is the URL of the menu item.
+- `target` is the target attribute of the menu item.
+
+Additionally, you can configure the following properties in the `navbar.toml` file:
+
+```toml
+title = "#andrewmolyuk"
+logo  = "img/logo.svg"
+
+[button]
+  enabled = true
+  text    = "Get my CV"
+  link    = "files/Andrew Molyuk.pdf"
+  target  = "_blank"
+```
+
+Where:
+
+- `title` is the title of the website.
+- `logo` is the path to the logo image.
+- `button` is the configuration of the button in the navigation bar.
+  - `enabled` is a boolean value to enable or disable the button.
+  - `text` is the text of the button.
+  - `link` is the URL of the button.
+  - `target` is the target attribute of the button.
 
 ## Real-world usage
 
