@@ -1,3 +1,5 @@
 [[social]]
-  type = "github"
-  url  = "https://github.com/npalavecino"
+  identifier = "github"
+  name       = "GitHub"
+  title      = "Visita mi GitHub"
+  url        = "https://github.com/npalavecino"
