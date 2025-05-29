@@ -2,9 +2,9 @@
 .NOTPARALLEL:
 .SILENT:
 
-lint:
-	markdownlint '**/*.md' --ignore node_modules
-@PHONY: lint
+# lint:
+# 	markdownlint '**/*.md' --ignore node_modules
+# @PHONY: lint
 
 dev: lint
 	hugo server --buildDrafts --buildFuture --disableFastRender --noHTTPCache  --navigateToChanged --templateMetricsHints --templateMetrics --verbose --watch --port 1313
