@@ -1,0 +1,10 @@
+[build]
+  publish = "public"
+  command = "make build"
+
+  [build.environment]
+    NODE_VERSION = "20"
+
+[context.production.environment]
+  HUGO_VERSION = "0.125.7"
+  HUGO_ENV     = "production"
