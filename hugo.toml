@@ -1,10 +1,18 @@
-baseURL      = 'https://localhost:1313/'
+baseURL = 'https://nicolaspalavecino.com/'
 languageCode = 'en-us'
-title        = 'Nicolas Palavecino V'
+title = 'Nicolas Palavecino V'
 
+defaultContentLanguage = "es"
 
+[languages]
+  [languages.es]
+    languageName = "Español"
+    weight = 1
+  [languages.en]
+    languageName = "English"
+    weight = 2
 
 [module]
   [module.hugoVersion]
     extended = true
-    min      = "0.116.0"
+    min = "0.116.0"
