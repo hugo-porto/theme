@@ -8,6 +8,7 @@ language: 'es'
 ---
 
 # Por qué decidí construir mi marca personal como ingeniero en camino a ser ejecutivo  
+
 ✨ *Subtítulo: Cómo la escritura, la tecnología y el liderazgo se convirtieron en herramientas para pensar, crecer y conectar*
 
 Por mucho tiempo pensé que mi trabajo hablaba por sí solo. Que si hacía las cosas bien, los resultados llegarían. Que el reconocimiento era una consecuencia natural de resolver problemas difíciles, ser eficiente y mantener los sistemas funcionando sin caídas.
