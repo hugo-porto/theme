@@ -13,3 +13,7 @@
 {{ partial "head/styles.html" . }}
 
 {{ template "_internal/google_analytics.html" . }}
+
+{{ range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
+{{ end }}

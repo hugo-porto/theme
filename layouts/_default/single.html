@@ -1,17 +1,13 @@
 {{ define "main" }}
-  <div class="container max-w-screen-xl mx-auto px-4">
-    <div class="grid grid-cols-1 gap-6">
-      <div class="bg-gray-50 px-8 py-10 rounded-md post-content">
-        <img
-          class="rounded-md mb-4 w-full"
-          src="{{ .RelPermalink }}/{{ .Params.image }}"
-          alt="{{ .Title }}"
-          title="{{ .Title }}" />
-        <h1 class="font-medium text-gray-700 text-3xl md:text-4xl mb-5">{{ .Title }}</h1>
-        {{ partial "post.html" . }}
-
-        {{ .Content | safeHTML }}
-      </div>
-    </div>
+<div class="container mx-auto px-6 max-w-3xl">
+  {{ with .Resources.GetMatch .Params.image }}
+    <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="w-full rounded-lg mb-6">
+  {{ end }}
+  <h1 class="text-4xl font-semibold mb-4">{{ .Title }}</h1>
+  <p class="text-gray-600 text-sm mb-10">{{ .Date.Format "January 2, 2006" }}</p>
+  <div class="prose max-w-none">
+    {{ .Content }}
   </div>
+</div>
 {{ end }}
+

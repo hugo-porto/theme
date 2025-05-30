@@ -2,6 +2,8 @@ baseURL      = 'https://localhost:1313/'
 languageCode = 'en-us'
 title        = 'Nicolas Palavecino V'
 
+
+
 [module]
   [module.hugoVersion]
     extended = true
