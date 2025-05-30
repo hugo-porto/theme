@@ -1,12 +1,36 @@
 {{/* Default data */}}
 {{ $title := "Don't measure your skills in percentages" }}
 {{ $skills := slice
-  (dict "title" "Programming Languages" "icon" "bx-code" "text" "Experienced in programming languages such as Python, JavaScript, Java, and C++. Proficient in object-oriented programming, functional programming, and scripting. Well-versed in data structures, algorithms, and design patterns.")
-  (dict "title" "Web Development" "icon" "bx-code-alt" "text" "Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Angular, and Vue.js. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.")
-  (dict "title" "Backend Development" "icon" "bx-server" "text" "Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.")
-  (dict "title" "CI/CD Pipelines" "icon" "bx-git-branch" "text" "Experienced in setting up CI/CD pipelines using Jenkins, GitHub Actions, and GitLab CI/CD. Proficient in automating build, test, and deployment processes. Well-versed in version control using Git and GitHub.")
-  (dict "title" "Agile Methodologies" "icon" "bxl-trello" "text" "Experienced in working with Agile methodologies such as Scrum and Kanban. Proficient in conducting sprint planning, daily standups, sprint reviews, and retrospectives. Well-versed in using Jira, Trello, and other tools.")
-  (dict "title" "DevOps Practices" "icon" "bxl-dev-to" "text" "Experienced in implementing DevOps practices such as infrastructure as code, configuration management, and monitoring. Proficient in using tools such as Terraform, Ansible, and Prometheus. Well-versed in logging, monitoring, and alerting.")
+  (dict 
+    "title" "Systems & Infrastructure" 
+    "icon" "bx-chip" 
+    "text" "Experienced in managing Linux-based systems, virtualization, networking, and storage. Skilled in system hardening, user access management, and infrastructure automation. Solid background in operational reliability and uptime assurance."
+  )
+  (dict 
+    "title" "Backend & Scripting Support" 
+    "icon" "bx-server" 
+    "text" "Familiar with backend technologies like Node.js, Express, and Django, mainly from an infrastructure and integration perspective. Proficient in scripting with Python and Bash for automation and task orchestration."
+  )
+  (dict 
+    "title" "Observability & Monitoring" 
+    "icon" "bx-bar-chart-alt-2" 
+    "text" "Experienced in setting up and managing observability stacks using Grafana, Prometheus, Datadog, and Loki. Skilled in log aggregation, metrics collection, and alert configuration for proactive incident response."
+  )
+  (dict 
+    "title" "CI/CD & Automation" 
+    "icon" "bx-cloud-upload" 
+    "text" "Skilled in building CI/CD pipelines with GitLab CI, Jenkins, and GitHub Actions. Experience automating deployments, integrating quality gates, and managing artifact repositories in production environments."
+  )
+  (dict 
+    "title" "DevOps & IaC" 
+    "icon" "bx-terminal" 
+    "text" "Hands-on with Infrastructure as Code using Terraform and configuration management tools like Ansible. Proficient in automating cloud and hybrid environments, managing environments across multiple platforms."
+  )
+  (dict 
+    "title" "Team Practices & Agile Culture" 
+    "icon" "bxl-trello" 
+    "text" "Comfortable working in cross-functional teams under Agile methodologies. Familiar with Jira and collaborative workflows, focused on reliability, continuous improvement, and business alignment."
+  )
 }}
 
 {{/* Custom data from configuration file */}}
