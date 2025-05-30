@@ -1,0 +1,25 @@
+title = "Educational journey"
+
+[[education]]
+title = "Postgraduate Diploma in Finance and Risk Management"
+college = "Pontificia Universidad Católica de Chile"
+date = "2024 - 2025"
+text = "Specialization in corporate finance, financial instruments, risk assessment, and decision-making models."
+
+[[education]]
+title = "Bachelor of Applied Engineering in Computer Systems"
+college = "Universidad Técnica Federico Santa María (UTFSM)"
+date = "2014 - 2016"
+text = "Focus on software development, system architecture, databases, and IT project management."
+
+[[education]]
+title = "Associate Degree in Telecommunications and Networking"
+college = "Universidad Técnica Federico Santa María (UTFSM)"
+date = "2011 - 2013"
+text = "Specialization in network infrastructure, telecommunications systems, routing/switching, and wireless technologies."
+
+[[education]]
+title = "CTE in Electronics – Technical High School Diploma"
+college = "Colegio Salesiano de Valparaíso"
+date = "2007 - 2010"
+text = "Career & Technical Education program focused on electronics, instrumentation, and electrical systems."
