@@ -1,68 +1,8 @@
-{{/* Default data */}}
+{{/* Cargar los datos desde TOML */}}
 {{ $title := "Professional milestones" }}
-{{ $companies := slice
-  (dict "name" "Grupo Falabella" "role" "Tech Team Lead SRE & PERF" "date" "Dec 2023 – Present" "text" (slice 
-    "Leading Site Reliability Engineering and Performance teams at the Digital Factory Logistics."
-    "Design and implementation of technical and business observability strategies across LATAM."
-    "Definition of key metrics, dashboard generation, alert automation, and MTTR reduction."
-    "Coordinated work with teams in Chile and India under agile methodologies."
-  ))
-  (dict "name" "Grupo Falabella" "role" "Senior Site Reliability Engineer" "date" "Jun 2022 – nov 2023" "text" (slice 
-    "Implemented technology to streamline deployment, monitoring, and maintenance of critical services."
-    "Developed performance and scalability tests."
-    "Managed incidents, postmortems, and distributed systems maintenance."
-    "Business observability, monitoring, and KPI definition."
-  ))
-  (dict "name" "Grupo Falabella" "role" "Site Reliability Engineer" "date" "Sep 2021 – Jul 2022" "text" (slice 
-    "Member of the SRE team for Digital Factory Logistics, working with teams in Chile and India."
-    "Managed Kubernetes clusters, load testing, and monitoring using Prometheus, Grafana, and Datadog."
-    "Contributed to the design of autonomous solutions, CI/CD, and resilient platforms."
-    "Technical stack: Bash, Python, Kubernetes, Docker, HELM, Linux. GCP, Azure, Terraform, GitLab."
-  ))
-  (dict "name" "CLM Consultores" "role" "Site Reliability Engineer" "date" "Jan 2021 – Oct 2021" "text" (slice 
-    "Member of the SRE team for Falabella's CIAM platform."
-    "Critical platform with over 7 million active users 24/7."
-    "Implemented technology for autonomous service deployment, monitoring, and operations."
-    "Incident management, postmortem analysis, and load testing."
-    "Maintained availability, latency, and overall system health."
-    "Kubernetes cluster management, monitoring, and observability."
-    "Agile environment and systematic problem-solving."
-  ))
-  (dict "name" "Evertec (ex-BBR)" "role" "Infrastructure/Platform Consultant" "date" "Sep 2019 – Jan 2021" "text" (slice 
-    "Part of the infrastructure and platform team, ensuring operational continuity of B2B, B2C, store, and logistics platforms in Chile, Peru, Colombia, and Argentina."
-    "Clients: Cencosud, SMU, ABCDIN, Construmart, Inkafarma, Santander, Hites, Esmax, Forus, H&M, Samsonite, among others."
-    "Configured and automated Dev, QA, and PROD environments."
-    "Managed Linux servers and virtualized environments (XenServer, Ovirt)."
-    "SNMP monitoring and Jenkins pipeline configuration."
-    "Managed services like Apache, Pulse, Keepalived, HAProxy, JBOSS, Wildfly, Tomcat."
-    "Used Docker, AWS (EC2, S3), Git, Amanda Backup."
-  ))
-  (dict "name" "Palavecino & Co spa" "role" "Co-founder" "date" "Feb 2017 – Sep 2019" "text" (slice 
-    "Specialty coffee shop and roastery in Tomé, Biobío region."
-    "Co-founder: project evaluation, design, and business implementation from scratch."
-    "Managed operations, sales, marketing, and business strategy."
-    "Led and trained a team of 10 people."
-  ))
-  (dict "name" "P.M.S CHILE" "role" "Project Manager" "date" "Sep 2016 – May 2019" "text" (slice 
-    "Responsible for IT project planning and execution, milestone tracking, and performance indicator generation."
-    "Ensured methodological compliance and supported strategic management of the department, including budgeting."
-    "In charge of configuration and documentation for the company’s underwater robotics division."
-    "Topics: Arduino, Linux, C."
-    "Main clients: Multiexport, Asmar, Asenav, Camanchaca."
-  ))
-  (dict "name" "EyC Computación" "role" "Infrastructure & HA Specialist" "date" "Aug 2014 – Jun 2016" "text" (slice 
-    "Systems engineering across Intel, System X, Storage, Linux, Windows, and VMware platforms."
-    "Managed IT platforms, server consolidation, virtualization, security, networking, and performance."
-    "Coordinated implementation teams and supervised on-site work."
-    "Handled client conflict management, technical proposals, and department budgeting."
-    "Clients: Evalueserve, Farmacias Knop, Mutual de Seguros, Chilean Navy, Demaria."
-    "Keywords: Linux, VMware, Storage, TSM, IBM."
-  ))
-}}
+{{ $companies := slice }}
 
-{{/* Custom data from configuration file */}}
 {{ with site.Data.sections.experience }}
-  {{ $companies = slice }}
   {{ if .title }}{{ $title = .title }}{{ end }}
   {{ if .company }}{{ $companies = .company }}{{ end }}
 {{ end }}
@@ -70,6 +10,7 @@
 <h2 class="text-4xl md:text-5xl lg:text-7xl  text-center font-medium font-poppins text-gray-400">
   {{ $title }}
 </h2>
+
 <div class="relative mx-auto mt-12 flex w-full flex-col text-center text-gray-600">
   <span class="left-1/4 absolute inset-y-0 ml-10 hidden w-0.5 bg-gray-300 md:block"></span>
   {{ range $companies }}
@@ -81,9 +22,7 @@
       </div>
       <div class="md:w-3/4">
         <div class="relative flex md:pl-16">
-          <span
-            class="absolute left-7 top-1 hidden h-6 w-6 rounded-full border-2 border-gray-300 bg-white md:block"></span>
-
+          <span class="absolute left-7 top-1 hidden h-6 w-6 rounded-full border-2 border-gray-300 bg-white md:block"></span>
           <div class="mt-1 flex">
             <div class="md:-mt-1 md:pl-16">
               <span class="block font-semibold">{{ .date }}</span>

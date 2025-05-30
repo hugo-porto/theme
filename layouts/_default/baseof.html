@@ -1,19 +1,15 @@
-<!doctype html>
-<html
-  lang="{{ or site.Language.LanguageCode site.Language.Lang }}"
-  dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <title>{{ .Title }}</title>
     {{ partial "head.html" . }}
   </head>
-  <body :class="{ 'overflow-hidden max-h-screen': mobileMenu }" class="relative" x-data="{ mobileMenu: false }">
-    <div id="main" class="relative max-w-screen-xl mx-auto px-5">
-      {{ partial "navbar.html" . }}
-      <main>
-        {{ block "main" . }}{{ end }}
-      </main>
-      <footer>
-        {{ partial "footer.html" . }}
-      </footer>
-    </div>
+  <body class="bg-white text-gray-800">
+    {{ partial "navbar.html" . }}
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
   </body>
 </html>

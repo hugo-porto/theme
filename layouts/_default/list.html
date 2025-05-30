@@ -1,33 +1,16 @@
 {{ define "main" }}
-  <div class="container max-w-screen-xl mx-auto px-4">
-    <h1 class="text-center font-medium text-gray-700 text-3xl md:text-4xl mb-5 font-poppins">{{ .Title }}</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {{ $posts := .Pages.ByPublishDate.Reverse }}
-      {{ $paginator := .Paginate $posts 10 }}
-      {{ range $paginator.Pages }}
-        <div class="bg-gray-50 px-8 py-10 rounded-md">
+  <div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6">{{ .Title }}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {{ range .Pages }}
+        <article>
           <a href="{{ .RelPermalink }}">
-            <img
-              class="rounded-md mb-4"
-              src="{{ .RelPermalink }}/{{ .Params.image }}"
-              alt="{{ .Title }}"
-              title="{{ .Title }}" />
+            <h2 class="text-xl font-semibold">{{ .Title }}</h2>
           </a>
-          <div class="relative">
-            <a href="{{ .RelPermalink }}">
-              <h2 class="font-medium text-gray-700 text-xl relative z-10">{{ .Title }}</h2>
-            </a>
-          </div>
-          {{ partial "partials/posts/meta.html" . }}
-          <div class="post-card">
-            {{ .Summary | safeHTML }}
-            <div class="block text-right mt-4 font-light text-lg">
-              <a href="{{ .RelPermalink }}" class="text-blue-500">Read more...</a>
-            </div>
-          </div>
-        </div>
+          <p class="text-sm text-gray-600">{{ .Date.Format "Jan 2, 2006" }}</p>
+          <p>{{ .Summary }}</p>
+        </article>
       {{ end }}
     </div>
-    {{ partial "pagination.html" . }}
   </div>
 {{ end }}
