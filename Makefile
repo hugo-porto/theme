@@ -5,7 +5,9 @@
 # lint:
 # 	markdownlint '**/*.md' --ignore node_modules
 # @PHONY: lint
-
+lint:
+	@echo "Lint deshabilitado por ahora."
+	
 dev: lint
 	hugo server --buildDrafts --buildFuture --disableFastRender --noHTTPCache  --navigateToChanged --templateMetricsHints --templateMetrics --verbose --watch --port 1313
 @PHONY: dev
