@@ -16,3 +16,8 @@ defaultContentLanguage = "es"
   [module.hugoVersion]
     extended = true
     min = "0.116.0"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

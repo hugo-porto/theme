@@ -1,13 +1,33 @@
+<!-- <!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/tailwind.css" />
+    {{ partial "head.html" . }}
+  </head>
+  <body class="bg-white text-gray-800 antialiased">
+    {{ partial "navbar.html" . }}
+
+    <main class="max-w-4xl mx-auto px-6 py-10">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+  </body>
+</html> -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <title>{{ .Title }}</title>
     {{ partial "head.html" . }}
+    <link rel="stylesheet" href="/css/tailwind.css" />
   </head>
   <body class="bg-white text-gray-800">
     {{ partial "navbar.html" . }}
-    <main>
+    <main class="min-h-screen px-4">
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}

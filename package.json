@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/hugo-porto/theme#readme",
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "husky": "^9.1.6",
     "prettier": "^3.3.3",
     "prettier-plugin-go-template": "^0.0.15"
