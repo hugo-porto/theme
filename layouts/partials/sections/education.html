@@ -1,9 +1,30 @@
 {{/* Default data */}}
 {{ $title := "Educational journey" }}
 {{ $educations := slice
-  (dict "title" "University" "date" "2015 - 2020" "text" "Graduated with a Bachelor's degree in Computer Science. Specialized in software engineering, web development, and data science. Completed a thesis on machine learning algorithms for image recognition.")
-  (dict "title" "High School" "date" "2005 - 2015" "text" "Experienced in web development technologies such as HTML, CSS, and JavaScript. Proficient in front-end frameworks such as React, Angular, and Vue.js. Well-versed in responsive design, cross-browser compatibility, and web performance optimization.")
-  (dict "title" "Kindergarten" "date" "2000 - 2005" "text" "Experienced in backend development technologies such as Node.js, Express, and Django. Proficient in RESTful APIs, GraphQL, and microservices architecture. Well-versed in database management using SQL and NoSQL databases.")
+    (dict 
+      "title" "Postgraduate Diploma in Finance and Risk Management"
+      "college" "Pontificia Universidad Católica de Chile" 
+      "date" "2025" 
+      "text" "Specialization in corporate finance, financial instruments, risk assessment, and decision-making models."
+    )
+    (dict 
+      "title" "Bachelor of Applied Engineering in Computer Systems"
+      "college" "Universidad Técnica Federico Santa María (UTFSM)" 
+      "date" "2014 - 2016" 
+      "text" "Focus on software development, system architecture, databases, and IT project management."
+    )
+    (dict 
+      "title" "Associate Degree in Telecommunications and Networking"
+      "college" "Universidad Técnica Federico Santa María (UTFSM)" 
+      "date" "2011 - 2013" 
+      "text" "Specialization in network infrastructure, telecommunications systems, routing/switching, and wireless technologies."
+    )
+    (dict 
+      "title" "CTE in Electronics – Technical High School Diploma" 
+      "college" "Colegio Salesiano de Valparaíso"
+      "date" "2007 - 2010" 
+      "text" "Career & Technical Education program focused on electronics, instrumentation, and electrical systems."
+    )  
 }}
 
 {{/* Custom data from configuration file */}}
@@ -23,6 +44,7 @@
       <div class="mb-9 rounded-xl p-7 sm:p-9 lg:px-6 xl:px-9 bg-gray-50">
         <div>
           <h3 class="mb-4 text-lg font-medium sm:text-xl lg:text-lg xl:text-xl">{{ .title }}</h3>
+          <h4 class="mb-4 text-xl font-light">{{ .college }}</h4>
           <h4 class="mb-4 text-xl font-light">{{ .date }}</h4>
           <p class="text-lg font-light">
             {{ .text }}
