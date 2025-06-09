@@ -18,7 +18,7 @@
               <h2 class="font-medium text-gray-700 text-xl relative z-10">{{ .Title }}</h2>
             </a>
           </div>
-          {{ partial "partials/posts/meta.html" . }}
+          {{ partial "posts/meta.html" . }}
           <div class="post-card">
             {{ .Summary | safeHTML }}
             <div class="block text-right mt-4 font-light text-lg">
@@ -28,6 +28,6 @@
         </div>
       {{ end }}
     </div>
-    {{ partial "partials/pagination.html" . }}
+    {{ partial "pagination.html" . }}
   </div>
 {{ end }}
