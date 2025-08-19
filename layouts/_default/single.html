@@ -8,7 +8,7 @@
           alt="{{ .Title }}"
           title="{{ .Title }}" />
         <h1 class="font-medium text-gray-700 text-3xl md:text-4xl mb-5">{{ .Title }}</h1>
-        {{ partial "partials/posts/meta.html" . }}
+        {{ partial "posts/meta.html" . }}
 
         {{ .Content | safeHTML }}
       </div>
