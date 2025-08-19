@@ -26,7 +26,11 @@
   {{ if .description }}{{ $description = .description }}{{ end }}
 {{ end }}
 
-{{ $avatar = (resources.Get $avatar).Resize "150x150" }}
+{{/* If avatar is a local asset, resize; if it's a URL or static path, use as-is */}}
+{{ $avatarUrl := $avatar }}
+{{ if and (not (hasPrefix $avatar "http")) (not (hasPrefix $avatar "/")) }}
+  {{ $avatarUrl = (resources.Get $avatar).Resize "150x150" }}
+{{ end }}
 
 
 <div class="w-full flex items-center justify-center">
@@ -42,11 +46,19 @@
     </div>
     <div class="md:flex items-center justify-center py-2 space-x-5 xl:space-x-10">
       <div class="items-center justify-center flex p-5 md:p-0">
-        <img
-          class="w-28 xl:w-36 rounded-full"
-          src="{{ $avatar.RelPermalink }}"
-          alt="{{ $text2 }}"
-          title="{{ $text2 }}" />
+        {{ if (reflect.IsMap $avatarUrl) }}
+          <img
+            class="w-28 xl:w-36 rounded-full"
+            src="{{ $avatarUrl.RelPermalink }}"
+            alt="{{ $text2 }}"
+            title="{{ $text2 }}" />
+        {{ else }}
+          <img
+            class="w-28 xl:w-36 rounded-full"
+            src="{{ $avatarUrl }}"
+            alt="{{ $text2 }}"
+            title="{{ $text2 }}" />
+        {{ end }}
       </div>
       <div
         class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-gray-100 font-outline-2 lg:font-outline-3 text-center md:text-right font-poppins font-semibold py-5 md:py-0">
