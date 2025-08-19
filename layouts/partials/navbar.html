@@ -21,7 +21,7 @@
   {{ if .menu }}{{ $menu = .menu }}{{ end }}
   {{ if .title }}{{ $title = .title }}{{ end }}
   {{ if .logo }}{{ $logo = .logo }}{{ end }}
-  {{ if .site.BaseURL }}{{ $logoLink = .site.BaseURL }}{{ end }}
+  {{ if .logoLink }}{{ $logoLink = .logoLink }}{{ else if .site.BaseURL }}{{ $logoLink = .site.BaseURL }}{{ end }}
   {{ if .button }}
     {{ if .button.enabled }}{{ $buttonEnabled = .button.enabled }}{{ end }}
     {{ if .button.text }}{{ $buttonText = .button.text }}{{ end }}
@@ -30,16 +30,15 @@
   {{ end }}
 {{ end }}
 
-{{ $logo = (resources.Get $logo) }}
+{{/* If logo is a static/public file, use the path directly */}}
 {{ if eq $buttonLink "#" }}
   {{ $buttonLink = (resources.Get "/files/cv.pdf").RelPermalink }}
 {{ end }}
 
-
 <div class="flex items-center justify-between py-5">
   <div class="flex items-center">
     <a href="{{ $logoLink }}">
-      <img src="{{ $logo.RelPermalink }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
+  <img src="{{ $logo }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
     </a>
     <a href="{{ $logoLink }}">
       <h1 class="text-lg lg:text-xl px-2 lg:px-3 font-medium">{{ $title }}</h1>
