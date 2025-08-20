@@ -32,13 +32,33 @@
 
 {{/* If logo is a static/public file, use the path directly */}}
 {{ if eq $buttonLink "#" }}
-  {{ $buttonLink = (resources.Get "/files/cv.pdf").RelPermalink }}
+  {{ $cvResource := resources.Get "/files/cv.pdf" }}
+  {{ if $cvResource }}
+    {{ $buttonLink = $cvResource.RelPermalink }}
+  {{ else }}
+    {{ $buttonLink = "/files/cv.pdf" }}
+  {{ end }}
 {{ end }}
 
 <div class="flex items-center justify-between py-5">
   <div class="flex items-center">
     <a href="{{ $logoLink }}">
-  <img src="{{ $logo }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
+      {{/* Safest logo rendering: handle string, resource, nil, and fallback */}}
+      {{ $defaultLogo := "img/default-logo.svg" }}
+      {{ $logoPath := $defaultLogo }}
+      {{ if $logo }}
+        {{ if eq (printf "%T" $logo) "string" }}
+          {{ $logoResource := resources.Get $logo }}
+          {{ if $logoResource }}
+            {{ $logoPath = $logoResource.RelPermalink }}
+          {{ else }}
+            {{ $logoPath = $logo }}
+          {{ end }}
+        {{ else if (and (isset $logo "RelPermalink") (not (eq $logo.RelPermalink nil))) }}
+          {{ $logoPath = $logo.RelPermalink }}
+        {{ end }}
+      {{ end }}
+      <img src="{{ $logoPath }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
     </a>
     <a href="{{ $logoLink }}">
       <h1 class="text-lg lg:text-xl px-2 lg:px-3 font-medium">{{ $title }}</h1>
