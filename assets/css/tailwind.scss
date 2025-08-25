@@ -1,10 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   body {
-    @apply bg-gray-100 text-gray-600 text-lg font-light font-roboto;
+    @apply bg-gray-100 text-gray-600 text-lg font-light;
+    font-family: 'Roboto', sans-serif;
   }
 
   h1 {
