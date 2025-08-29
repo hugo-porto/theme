@@ -2,8 +2,8 @@
 .SILENT:
 
 lint:
-	markdownlint '**/*.md' --ignore node_modules
-	stylelint '**/*.scss'
+	npx markdownlint '**/*.md' --ignore node_modules
+	npx stylelint '**/*.scss'
 @PHONY: lint
 
 dev-tailwind:
