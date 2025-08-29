@@ -278,18 +278,29 @@ major version bump.
 
 **Release Process:**
 
-Releases are automatically triggered when commits are pushed to the `main` branch. The semantic-release tool will:
+Releases are fully automated through GitHub Actions:
 
-1. Analyze commit messages to determine the version bump
-2. Generate release notes from commit messages
-3. Update `package.json` and version files
-4. Create a Git tag and GitHub release with generated notes
+1. **On Pull Request**: CI workflow runs linting, building, and commit message validation
+2. **On Push to Main**: CI workflow runs first, then release workflow triggers
+3. **Semantic Release**: Analyzes commit messages to determine version bump type
+4. **Automated Tasks**: Updates `package.json`, creates git tag, and publishes GitHub release with generated notes
+
+**CI/CD Pipeline:**
+
+- **Linting**: Markdown and SCSS validation
+- **Building**: TailwindCSS compilation and Hugo static site generation
+- **Commit Validation**: Commitlint ensures conventional commit format
+- **Release**: Automatic versioning and GitHub release creation
 
 **Local Testing:**
 
 ```bash
 # Test what the next release would be (dry-run)
 make release-dry
+
+# Run CI checks locally
+make build
+make lint
 ```
 
 I appreciate any contributions and would like to thank you in advance for your support.
