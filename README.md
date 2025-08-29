@@ -220,12 +220,32 @@ logo  = "img/logo.svg"
 Where:
 
 - `title` is the title of the website.
-- `logo` is the path to the logo image.
+- `logo` is the path to the logo image (supports both local asset paths like `"img/logo.svg"` and external URLs).
 - `button` is the configuration of the button in the navigation bar.
   - `enabled` is a boolean value to enable or disable the button.
   - `text` is the text of the button.
   - `link` is the URL of the button.
   - `target` is the target attribute of the button.
+
+## Troubleshooting
+
+### Logo Not Displaying
+
+If you encounter issues with logo rendering (e.g., "nil pointer evaluating resource.Resource.RelPermalink"),
+ensure your `data/navbar.toml` file has a valid logo configuration:
+
+```toml
+# Use a local asset (preferred)
+logo = "img/logo.svg"
+
+# Or use an external URL
+logo = "https://example.com/logo.png"
+
+# Or use an empty string to use the default
+logo = ""
+```
+
+The theme includes robust error handling to prevent rendering failures regardless of logo configuration.
 
 ## Real-world usage
 
