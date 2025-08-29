@@ -231,8 +231,8 @@ Where:
 
 ### Logo Not Displaying
 
-If you encounter issues with logo rendering (e.g., "nil pointer evaluating resource.Resource.RelPermalink"),
-ensure your `data/navbar.toml` file has a valid logo configuration:
+If you encounter issues with logo rendering (e.g., "nil pointer evaluating resource.Resource.RelPermalink"), ensure your
+`data/navbar.toml` file has a valid logo configuration:
 
 ```toml
 # Use a local asset (preferred)

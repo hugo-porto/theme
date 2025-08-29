@@ -40,16 +40,16 @@
   {{ end }}
 {{ end }}
 
+
 <div class="flex items-center justify-between py-5">
   <div class="flex items-center">
     <a href="{{ $logoLink }}">
-      {{/* 
-        Enhanced logo rendering with comprehensive error handling
+      {{/* Enhanced logo rendering with comprehensive error handling
         Fixes GitHub issue #13: nil pointer evaluating resource.Resource.RelPermalink
       */}}
       {{ $defaultLogo := "img/default-logo.svg" }}
       {{ $logoPath := $defaultLogo }}
-      
+
       {{ if $logo }}
         {{/* Case 1: Logo is a string path */}}
         {{ if eq (printf "%T" $logo) "string" }}
@@ -62,7 +62,7 @@
               {{ $logoPath = $logo }}
             {{ end }}
           {{ end }}
-        {{/* Case 2: Logo is already a resource object */}}
+          {{/* Case 2: Logo is already a resource object */}}
         {{ else }}
           {{ with $logo }}
             {{ if .RelPermalink }}
