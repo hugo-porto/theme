@@ -244,6 +244,40 @@ to contributions and would be happy to discuss potential improvements to the the
 If you would like to contribute to the theme, please fork the repository and submit a pull request. I will review any
 pull requests and merge them if they provide value to the theme.
 
+### Development Workflow
+
+This project uses [semantic-release](https://semantic-release.gitbook.io/) for automated version management and
+releases.
+
+**Commit Message Format:** Follow [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+- `feat:` - new features (triggers minor version bump)
+- `fix:` - bug fixes (triggers patch version bump)
+- `docs:` - documentation changes
+- `style:` - formatting, missing semicolons, etc.
+- `refactor:` - code changes that neither fix bugs nor add features
+- `test:` - adding missing tests
+- `chore:` - maintenance tasks
+
+**Breaking Changes:** Add `BREAKING CHANGE:` in the commit body or use `!` after the type (e.g., `feat!:`) to trigger a
+major version bump.
+
+**Release Process:**
+
+Releases are automatically triggered when commits are pushed to the `main` branch. The semantic-release tool will:
+
+1. Analyze commit messages to determine the version bump
+2. Generate release notes from commit messages
+3. Update `package.json` and version files
+4. Create a Git tag and GitHub release with generated notes
+
+**Local Testing:**
+
+```bash
+# Test what the next release would be (dry-run)
+make release-dry
+```
+
 I appreciate any contributions and would like to thank you in advance for your support.
 
 ## License
