@@ -43,19 +43,32 @@
 <div class="flex items-center justify-between py-5">
   <div class="flex items-center">
     <a href="{{ $logoLink }}">
-      {{/* Safest logo rendering: handle string, resource, nil, and fallback */}}
+      {{/* 
+        Enhanced logo rendering with comprehensive error handling
+        Fixes GitHub issue #13: nil pointer evaluating resource.Resource.RelPermalink
+      */}}
       {{ $defaultLogo := "img/default-logo.svg" }}
       {{ $logoPath := $defaultLogo }}
+      
       {{ if $logo }}
+        {{/* Case 1: Logo is a string path */}}
         {{ if eq (printf "%T" $logo) "string" }}
-          {{ $logoResource := resources.Get $logo }}
-          {{ if $logoResource }}
-            {{ $logoPath = $logoResource.RelPermalink }}
-          {{ else }}
-            {{ $logoPath = $logo }}
+          {{ if ne $logo "" }}
+            {{ $logoResource := resources.Get $logo }}
+            {{ if $logoResource }}
+              {{ $logoPath = $logoResource.RelPermalink }}
+            {{ else }}
+              {{/* Fallback: use string as-is for external URLs or static files */}}
+              {{ $logoPath = $logo }}
+            {{ end }}
           {{ end }}
-        {{ else if (and (isset $logo "RelPermalink") (not (eq $logo.RelPermalink nil))) }}
-          {{ $logoPath = $logo.RelPermalink }}
+        {{/* Case 2: Logo is already a resource object */}}
+        {{ else }}
+          {{ with $logo }}
+            {{ if .RelPermalink }}
+              {{ $logoPath = .RelPermalink }}
+            {{ end }}
+          {{ end }}
         {{ end }}
       {{ end }}
       <img src="{{ $logoPath }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
