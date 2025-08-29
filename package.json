@@ -26,10 +26,12 @@
     "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "prettier-plugin-go-template": "^0.0.15",
-    "semantic-release": "^24.2.0",
-    "@semantic-release/exec": "^6.0.3",
+    "semantic-release": "^24.2.7",
+    "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.0"
+    "@semantic-release/github": "^11.0.5",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",

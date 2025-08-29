@@ -249,15 +249,29 @@ pull requests and merge them if they provide value to the theme.
 This project uses [semantic-release](https://semantic-release.gitbook.io/) for automated version management and
 releases.
 
-**Commit Message Format:** Follow [Conventional Commits](https://www.conventionalcommits.org/) specification:
+**Commit Message Format:**
+
+Follow [Conventional Commits](https://www.conventionalcommits.org/) specification. Commit messages are automatically
+validated using commitlint:
 
 - `feat:` - new features (triggers minor version bump)
 - `fix:` - bug fixes (triggers patch version bump)
 - `docs:` - documentation changes
 - `style:` - formatting, missing semicolons, etc.
 - `refactor:` - code changes that neither fix bugs nor add features
+- `perf:` - performance improvements
 - `test:` - adding missing tests
+- `build:` - changes that affect the build system
+- `ci:` - changes to CI configuration files
 - `chore:` - maintenance tasks
+
+**Examples:**
+
+```bash
+feat: add dark mode toggle
+fix: resolve navbar mobile menu issue
+docs: update installation instructions
+```
 
 **Breaking Changes:** Add `BREAKING CHANGE:` in the commit body or use `!` after the type (e.g., `feat!:`) to trigger a
 major version bump.
