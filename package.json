@@ -32,7 +32,7 @@
     "@semantic-release/github": "^11.0.5",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "markdownlint-cli": "^0.42.0",
+    "markdownlint-cli": "^0.45.0",
     "stylelint": "^16.9.0",
     "stylelint-config-standard-scss": "^13.1.0"
   },
