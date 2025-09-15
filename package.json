@@ -29,7 +29,7 @@
     "semantic-release": "^24.2.7",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.5",
+    "@semantic-release/github": "^11.0.6",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "markdownlint-cli": "^0.45.0",
