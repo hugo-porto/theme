@@ -1,0 +1,37 @@
+{{ define "header" }}
+{{ partial "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<div class="post">
+  <h1 class="text-center font-medium text-gray-700 text-3xl md:text-4xl mb-5 font-poppins">{{ .Title }}</h1>
+  {{ .Content }}
+  <!-- create a list with all uppercase letters -->
+  {{ $letters := split "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "" }}
+
+  <!-- range all pages sorted by their title -->
+  {{ range sort .Site.Taxonomies.tags }}
+  <!-- get the first character of each title. Assumes that the title is never empty! -->
+  {{ $firstChar := substr .Page.Title 0 1 | upper }}
+
+  <!-- in case $firstChar is a letter -->
+  {{ if $firstChar | in $letters }}
+  <!-- get the current letter -->
+  {{ $curLetter := $.Scratch.Get "curLetter" }}
+  <!-- if $curLetter isn't set or the letter has changed -->
+  {{ if ne $firstChar $curLetter }}
+  <!-- update the current letter and print it -->
+  {{ $.Scratch.Set "curLetter" $firstChar }}
+  <div class="border-b-2 border-gray-300 px-4 py-2 text-lg font-medium mb-4">{{ $firstChar }}</div>
+  {{ end }}
+
+  <a class="text-blue-500 hover:underline text-sm mx-1 h-5" href="{{ .Page.Permalink }}"><i class="bx bx-purchase-tag-alt text-gray-500 h-4"></i> 
+    {{ .Page.Title }} ({{ .Count }})</a>
+  {{ end }}
+  {{ end }}
+</div>
+{{ end }}
+
+{{ define "footer" }}
+{{ partial "page-list/footer.html" . }}
+{{ end }}
