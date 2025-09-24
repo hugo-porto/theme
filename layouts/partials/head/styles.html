@@ -1,6 +1,6 @@
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-{{ $styles := resources.Get "styles.scss" }}
+{{ $styles := resources.Get "css/styles.scss" }}
 {{ if $styles }}
   {{ if .Site.IsServer }}
     {{ $styles = $styles | toCSS }}
