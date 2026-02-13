@@ -1,252 +1,228 @@
-# hugo-porto theme
+# Nicolás Palavecino - Personal Website
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/de8777e0fd0249d480a92da2dda5863d)](https://app.codacy.com/gh/hugo-porto/theme/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+A modern, minimal, and performant personal website for a technology leader building toward CTO.
 
-The `hugo-porto` is a personal portfolio theme for Hugo. It features a minimalist design that focuses on showcasing your
-projects and achievements. This theme is perfect for developers, designers, and creatives who want to create a simple
-yet powerful online portfolio.
+Built with Next.js 14, TypeScript, and Tailwind CSS. Optimized for speed, SEO, and developer experience.
 
-The theme is under active development, and new features are being added regularly. If you have any suggestions or
-feature requests, please open an [issue](https://github.com/hugo-porto/theme/issues) on the GitHub repository. I would
-love to hear your feedback and ideas for improving the theme.
+## 🚀 Features
 
-## Screenshots
+- **Modern Stack**: Next.js 14 with App Router, TypeScript, Tailwind CSS
+- **Blog Engine**: MDX-powered blog with syntax highlighting, reading time, and tags
+- **SEO Optimized**: Open Graph, Twitter Cards, sitemap, robots.txt
+- **Dark Mode**: System-aware theme with manual toggle
+- **Performance**: Lighthouse score > 90, optimized assets, lazy loading
+- **Responsive**: Mobile-first design, works on all devices
+- **Type Safe**: Full TypeScript coverage with strict mode
 
-![Screenshot](https://raw.githubusercontent.com/hugo-porto/theme/main/images/screenshot.png)
+## 📦 Project Structure
 
-![Skills](https://raw.githubusercontent.com/hugo-porto/theme/main/images/skills.png)
-
-![Experience](https://raw.githubusercontent.com/hugo-porto/theme/main/images/experience.png)
-
-![Custom](https://raw.githubusercontent.com/hugo-porto/theme/main/images/custom.png)
-
-![Posts](https://raw.githubusercontent.com/hugo-porto/theme/main/images/posts.png)
-
-## Features
-
-- **Responsive Design**: The theme is fully responsive and works on all devices, including smartphones, tablets, and
-  desktops.
-- **Customizable**: The theme is highly customizable and allows you to configure various aspects of your website.
-- **Lightweight**: The theme is lightweight and optimized for performance, ensuring fast load times.
-- **SEO Friendly**: The theme is SEO friendly and includes meta tags and structured data to help search engines index
-  your site.
-- **Social Media Integration**: The theme includes social media integration, allowing you to link to your social media
-  profiles.
-- **Google Analytics**: The theme includes Google Analytics integration, allowing you to track visitors to your site.
-- **Syntax Highlighting**: The theme includes syntax highlighting for code snippets, making it easy to showcase your
-  code.
-- **Tailwind CSS**: The theme uses Tailwind CSS for styling, making it easy to customize the design of your site.
-
-## Roadmap
-
-I'm constantly working on improving and expanding the features of this theme. If you find that a feature you need is
-missing, please feel free to contact me. I'm open to dialogue and would be happy to discuss potential additions to the
-theme.
-
-Features planned to implement in the nearest future:
-
-- Opengraph and SEO meta information
-- Default mock data to easy install and implementaton
-- More configuration options
-- More examples and documentation
-- Dark mode switcher
-
-If you have any suggestions or feature requests, please open an issue on the GitHub repository. I would love to hear
-your feedback and ideas for improving the theme.
-
-## Demo
-
-For a live demonstration of the theme in action, please visit the demo website at
-[https://hugo-porto.netlify.app/](https://hugo-porto.netlify.app/). This demo site showcases all the features and design
-elements that the `hugo-porto` theme has to offer, providing a comprehensive overview of its capabilities.
-
-You can find the source code for the demo website at
-[https://github.com/hugo-porto/web](https://github.com/hugo-porto/web).
-
-In addition, you can find a real-world example of the theme in action on my personal website at
-[https://andrew.molyuk.com](https://andrew.molyuk.com). The source code for my website is available at
-[https://github.com/andrewmolyuk/andrew.molyuk.com](https://github.com/andrewmolyuk/andrew.molyuk.com)
-
-## Prerequisites
-
-- [Hugo](https://gohugo.io/getting-started/installing/) - a popular open-source static site generator written in Go.
-
-## Installation
-
-The simplest method to use this theme is by forking the [web](https://github.com/hugo-porto/web) sample repository.
-Afterwards, adjust the configurations to suit your requirements.
-
-If you want to install the theme from scratch using Hugo modules, follow these steps:
-
-1. First, ensure that you have [Hugo](https://gohugo.io/getting-started/installing/) installed on your system. You need
-   version 0.116.0 or higher.
-
-2. Create a new Hugo site if you haven't already. You can do this by running the following command in your terminal:
-
-   ```bash
-   hugo new site mysite
-   ```
-
-   Replace `mysite` with the name of your site.
-
-3. Navigate to the root directory of your new site:
-
-   ```bash
-   cd mysite
-   ```
-
-4. Initialize Hugo modules:
-
-   ```shell
-   hugo mod init github.com/<your username>/<your repo name>
-   ```
-
-5. Add the `hugo-porto` theme as a Hugo module in your configuration file:
-
-   ```toml
-   [module]
-   [[module.imports]]
-   path = "github.com/hugo-porto/theme"
-   ```
-
-6. Download latest version of the theme:
-
-   ```shell
-   hugo mod tidy
-   ```
-
-7. Finally, start your Hugo server:
-
-   ```bash
-   hugo server
-   ```
-
-   You should now be able to see your new site at `http://localhost:1313`.
-
-8. Now you have to add configuration files to your data folder according your needs. You can see example files at
-   [https://github.com/hugo-porto/web/tree/main/data](https://github.com/hugo-porto/web/tree/main/data).
-
-## Configuration
-
-The `hugo-porto` theme is highly customizable and allows you to configure various aspects of your website.
-
-You can find the configuration files in the `data` folder of the sample repository. You can adjust any setting to suit
-your needs. So here is a list and the customizable content of the of configuration data files:
-
-### `data/home.toml`
-
-This file define the order of the sections on the home page. You can add or remove sections and change the order of the
-sections.
-
-```toml
-[[section]]
-  id      = "hero"
-  enabled = true
-  weight  = 1
-
-...
-
-[[section]]
-  id      = "testimonials"
-  enabled = true
-  weight  = 6
+```
+nicolas-palavecino-web/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── about/             # About page
+│   │   ├── blog/              # Blog listing & individual posts
+│   │   ├── work/              # Work with me page
+│   │   ├── layout.tsx         # Root layout with metadata
+│   │   ├── page.tsx           # Homepage
+│   │   └── sitemap.ts         # Dynamic sitemap generation
+│   ├── components/            # React components
+│   │   ├── Header.tsx         # Site header with navigation
+│   │   ├── Footer.tsx         # Site footer
+│   │   ├── ThemeProvider.tsx  # Theme context provider
+│   │   └── ThemeToggle.tsx    # Dark mode toggle
+│   ├── content/               # Content files
+│   │   └── posts/             # Blog posts (MDX)
+│   ├── lib/                   # Utility functions
+│   │   └── posts.ts           # Blog post utilities
+│   └── styles/                # Global styles
+├── public/                    # Static assets
+│   ├── images/               # Images
+│   └── robots.txt            # SEO robots file
+├── next.config.js            # Next.js configuration
+├── tailwind.config.js        # Tailwind CSS configuration
+├── tsconfig.json             # TypeScript configuration
+├── netlify.toml              # Netlify deployment config
+└── package.json              # Dependencies and scripts
 ```
 
-Each section has three properties:
+## 🛠 Tech Stack
 
-- `id` is the unique identifier of the section and should match the filename of the section template. For example, the
-  `hero` section id corresponds to the `data/sections/hero.toml` configuration file.
-- `enabled` is a boolean value to enable or disable the section.
-- `weight` is the order of the section.
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Content**: MDX for blog posts
+- **Deployment**: Netlify
+- **Icons**: Lucide React
 
-### `data/footer.toml`
+## 📝 Getting Started
 
-This file contains the footer configuration. You can add your social media links and other information here.
+### Prerequisites
 
-```toml
-[[social]]
-  type = "github"
-  url  = "add your GitHub profile link here"
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/nicolas-palavecino-web.git
+cd nicolas-palavecino-web
 ```
 
-The `social` section contains the following properties:
-
-- `type` is the name of the social media platform. The following values allowed:
-  - `facebook`
-  - `linkedin`
-  - `github`
-  - `instagram`
-  - `youtube`
-  - `dribbble`
-  - `behance`
-  - `medium`
-  - `telegram`
-  - `whatsapp`
-
-- `id`: is the profile id or username on the social media platform.
-
-### `data/navbar.toml`
-
-This file contains the navigation bar configuration. You can add or remove menu items here.
-
-```toml
-[[menu]]
-  text        = "Home"
-  description = "Welcome to my personal website"
-  link        = "/"
-  target      = "_self"
+2. Install dependencies:
+```bash
+npm install
 ```
 
-The `menu` section contains the following properties:
-
-- `text` is the text of the menu item.
-- `description` is the description of the menu item.
-- `link` is the URL of the menu item.
-- `target` is the target attribute of the menu item.
-
-Additionally, you can configure the following properties in the `navbar.toml` file:
-
-```toml
-title = "#andrewmolyuk"
-logo  = "img/logo.svg"
-
-[button]
-  enabled = true
-  text    = "Get my CV"
-  link    = "files/Andrew Molyuk.pdf"
-  target  = "_blank"
+3. Create environment file:
+```bash
+cp .env.example .env.local
 ```
 
-Where:
+4. Run development server:
+```bash
+npm run dev
+```
 
-- `title` is the title of the website.
-- `logo` is the path to the logo image.
-- `button` is the configuration of the button in the navigation bar.
-  - `enabled` is a boolean value to enable or disable the button.
-  - `text` is the text of the button.
-  - `link` is the URL of the button.
-  - `target` is the target attribute of the button.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Real-world usage
+## 🚀 Deployment
 
-If you want to see a real-world example of the theme in action, you can check out the following websites:
+### Deploy to Netlify (Recommended)
 
-- [andrew.molyuk.com](https://andrew.molyuk.com) - my personal website, which uses the `hugo-porto` theme.
+1. **Connect to GitHub**:
+   - Push your code to GitHub
+   - Go to [Netlify](https://app.netlify.com)
+   - Click "Add new site" → "Import an existing project"
+   - Connect your GitHub repository
 
-If you are using the `hugo-porto` theme on your website and would like to be featured here, please let me know. I would
-be happy to include your website in the list of real-world examples.
+2. **Configure Build**:
+   - Build command: `npm run build`
+   - Publish directory: `out`
+   - Click "Deploy site"
 
-## Contributing
+3. **Add Custom Domain** (Optional):
+   - Go to Site settings → Domain management
+   - Add your custom domain
+   - Update DNS records as instructed
 
-If you have any suggestions, feature requests, or bug reports, please open an issue on the GitHub repository. I am open
-to contributions and would be happy to discuss potential improvements to the theme.
+4. **Environment Variables** (If needed):
+   - Go to Site settings → Environment variables
+   - Add any variables from `.env.example`
 
-If you would like to contribute to the theme, please fork the repository and submit a pull request. I will review any
-pull requests and merge them if they provide value to the theme.
+### Manual Deployment
 
-I appreciate any contributions and would like to thank you in advance for your support.
+Build for production:
+```bash
+npm run build
+```
 
-## License
+The static site will be generated in the `out/` directory.
 
-This theme is distributed under the MIT License. See
-[LICENSE](https://raw.githubusercontent.com/hugo-porto/theme/main/LICENSE) for more information.
+## ✍️ Writing Blog Posts
+
+Create new blog posts in `src/content/posts/`:
+
+```mdx
+---
+title: "Your Post Title"
+date: "2024-01-01"
+description: "A brief description of your post"
+tags: ["tag1", "tag2"]
+---
+
+# Your Post Title
+
+Your content here...
+```
+
+The blog engine automatically:
+- Calculates reading time
+- Generates slugs from filenames
+- Sorts posts by date
+- Renders MDX with syntax highlighting
+
+## 🎨 Customization
+
+### Colors
+
+Edit `tailwind.config.js` to change the color scheme:
+
+```js
+colors: {
+  primary: {
+    // Your brand colors
+  },
+}
+```
+
+### Metadata
+
+Update site metadata in `src/app/layout.tsx`:
+
+```typescript
+export const metadata: Metadata = {
+  title: 'Your Name',
+  description: 'Your description',
+  // ...
+}
+```
+
+### Social Links
+
+Update social links in `src/components/Footer.tsx`:
+
+```typescript
+const socialLinks = [
+  { name: 'Twitter', href: 'https://twitter.com/yourhandle' },
+  // ...
+]
+```
+
+## 📊 Performance
+
+This site is optimized for performance:
+
+- Static site generation (SSG)
+- Optimized images and fonts
+- Minimal JavaScript bundle
+- CSS purging with Tailwind
+- Lazy loading components
+
+Target Lighthouse scores:
+- Performance: > 90
+- Accessibility: > 90
+- Best Practices: > 90
+- SEO: > 90
+
+## 🔧 Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
+
+## 📄 License
+
+MIT License - feel free to use this as a template for your own site.
+
+## 🤝 Contributing
+
+This is a personal website, but suggestions and improvements are welcome!
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/improvement`)
+3. Commit your changes (`git commit -m 'Add some improvement'`)
+4. Push to the branch (`git push origin feature/improvement`)
+5. Open a Pull Request
+
+## 📧 Contact
+
+Nicolás Palavecino - [contact@nicolaspalavecino.com](mailto:contact@nicolaspalavecino.com)
+
+---
+
+**Built with care for technology leaders who want a professional, performant web presence.**

@@ -1,10 +1,37 @@
 [build]
-  publish = "public"
-  command = "make build"
+  command = "npm run build"
+  publish = "out"
 
-  [build.environment]
-    NODE_VERSION = "20"
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
-[context.production.environment]
-  HUGO_VERSION = "0.125.7"
-  HUGO_ENV     = "production"
+[build.environment]
+  NODE_VERSION = "18"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/rss"
+  to = "/rss.xml"
+  status = 301
+
+[[redirects]]
+  from = "/feed"
+  to = "/rss.xml"
+  status = 301

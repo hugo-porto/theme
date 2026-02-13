@@ -1,14 +1,38 @@
-# Hugo workfiles and public folder
-.hugo_build.lock
-public
-resources/_gen
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Mac OS files
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+/build
+
+# production
+/dist
+
+# misc
 .DS_Store
+*.pem
 
-# Node.js files
-node_modules
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Mock content files
-content
-data
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# netlify
+.netlify

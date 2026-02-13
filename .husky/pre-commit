@@ -1,3 +1,0 @@
-make lint
-make build
-git add static/css/tailwind.css
