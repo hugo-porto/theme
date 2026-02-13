@@ -95,7 +95,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             options={{
               mdxOptions: {
                 remarkPlugins: [remarkGfm],
-                rehypePlugins: [rehypeHighlight],
+                rehypePlugins: [rehypeHighlight as any],
               },
             }}
           />
