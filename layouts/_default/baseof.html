@@ -48,6 +48,15 @@
           <li class="py-2">
             <a href="/files/Andrew Molyuk.pdf" target="_blank" class="cursor-pointer font-normal">Get my CV</a>
           </li>
+          {{ with site.Data.navbar.themeToggle }}
+            {{ if .enabled }}
+              <li class="py-2">
+                <a id="theme-toggle-mobile" href="#" class="cursor-pointer font-normal" role="button">
+                  <span id="theme-toggle-mobile-label">Switch theme</span>
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
         </ul>
       </div>
     </div>
