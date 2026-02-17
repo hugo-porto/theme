@@ -227,6 +227,19 @@ Where:
   - `link` is the URL of the button.
   - `target` is the target attribute of the button.
 
+### Theme toggle
+
+You can enable a built-in 3-state theme toggle (system / dark / light) by adding the following to `data/navbar.toml`:
+
+```toml
+[themeToggle]
+  enabled = true
+```
+
+When enabled, the toggle appears in the navbar and the mobile menu. The preference is persisted to `localStorage` under
+the key `theme`. The theme script also exposes helpers for programmatic control: `__getPreferredTheme()`,
+`__setPreferredTheme(mode)`, and `__cyclePreferredTheme()`.
+
 ## Troubleshooting
 
 ### Logo Not Displaying
