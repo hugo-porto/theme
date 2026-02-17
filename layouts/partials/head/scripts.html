@@ -2,7 +2,7 @@
 
 {{ $scripts := resources.Get "scripts.js" }}
 {{ if $scripts }}
-  {{ if .Site.IsServer }}
+  {{ if hugo.IsServer }}
     <script src="{{ $scripts.RelPermalink }}" defer></script>
   {{ else }}
     {{ $scripts = $scripts | minify | fingerprint }}
