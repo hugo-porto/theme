@@ -29,6 +29,10 @@
     background-color: var(--site-bg);
     color: var(--site-text);
   }
+  /* Hide elements with x-cloak until Alpine initialises */
+  [x-cloak] {
+    display: none !important;
+  }
   .bg-gray-50,
   .bg-white,
   .bg-gray-200 {
