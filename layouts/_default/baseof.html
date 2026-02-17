@@ -15,5 +15,40 @@
         {{ partial "footer.html" . }}
       </footer>
     </div>
+    <div
+      class="fixed inset-0 min-h-screen bg-black lg:hidden"
+      style="z-index:99999;"
+      :class="mobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'">
+      <div class="absolute right-0 min-h-screen bg-gray-200 py-5 px-10 w-2/3 sm:w-1/3 z-50">
+        <button class="absolute top-0 right-0 mt-9 mr-4" @click="mobileMenu = false">
+          <i class="bx bx-x text-4xl"></i>
+        </button>
+        <ul class="mt-12 flex flex-col">
+          {{ $menu := slice
+            (dict "link" "/" "target" "_self" "text" "Home" "description" "Navigate to home page")
+            (dict "link" "/posts" "target" "_self" "text" "Posts" "description" "Navigate to posts section")
+            (dict "link" "/tags" "target" "_self" "text" "Tags" "description" "Navigate to tags section")
+          }}
+          {{ with site.Data.navbar }}
+            {{ if .menu }}{{ $menu = .menu }}{{ end }}
+          {{ end }}
+          {{ range $menu }}
+            <li class="py-2">
+              <a
+                href="{{ .link }}"
+                alt="{{ .description }}"
+                title="{{ .description }}"
+                target="{{ .target }}"
+                class="cursor-pointer font-normal">
+                {{ .text }}
+              </a>
+            </li>
+          {{ end }}
+          <li class="py-2">
+            <a href="/files/Andrew Molyuk.pdf" target="_blank" class="cursor-pointer font-normal">Get my CV</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
