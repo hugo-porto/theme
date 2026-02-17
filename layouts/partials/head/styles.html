@@ -55,7 +55,6 @@
   }
 
   .bg-gray-50,
-  .bg-white,
   .bg-gray-200 {
     background-color: var(--card-bg) !important;
   }
@@ -121,9 +120,21 @@
     color: var(--site-text) !important;
   }
   html.dark .bg-white,
-  html[data-theme="dark"] .bg-white,
-  html[data-theme="light"] .bg-white {
+  html[data-theme="dark"] .bg-white {
     background-color: var(--card-bg) !important;
+  }
+
+  /* Dark-mode: make buttons that use `hover:bg-gray-600` lighten on hover
+     so text remains readable and the hover feels like a lighter highlight. */
+  html.dark .hover\:bg-gray-600:hover,
+  html[data-theme="dark"] .hover\:bg-gray-600:hover {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  /* Prevent `hover:text-white` from making text invisible on light hover backgrounds in dark mode. */
+  html.dark .hover\:text-white:hover,
+  html[data-theme="dark"] .hover\:text-white:hover {
+    color: var(--site-text) !important;
   }
 </style>
 

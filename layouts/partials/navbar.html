@@ -69,7 +69,7 @@
         <li class="px-5">
           <a href="{{ $buttonLink }}" target="{{ $buttonTarget }}">
             <button
-              class="px-10 py-4 bg-white hover:bg-gray-600 hover:text-white rounded-lg font-normal text-base transition duration-300">
+              class="cursor-pointer px-10 py-4 bg-white hover:bg-gray-600 hover:text-white rounded-lg font-normal text-base transition duration-300">
               {{ $buttonText }}
             </button>
           </a>
@@ -82,7 +82,7 @@
               id="theme-toggle-desktop"
               type="button"
               aria-label="Toggle theme"
-              class="p-2 rounded flex items-center justify-center ml-3"
+              class="cursor-pointer p-2 rounded flex items-center justify-center ml-3"
               onclick="window.__cyclePreferredTheme()">
               <i class="bx bx-desktop text-xl"></i>
             </button>
@@ -102,8 +102,8 @@
 <script>
   (function () {
     function iconFor(mode) {
-      if (mode === "dark") return "bx bx-sun text-xl";
-      if (mode === "light") return "bx bx-moon text-xl";
+      if (mode === "dark") return "bx bx-moon text-xl";
+      if (mode === "light") return "bx bx-sun text-xl";
       return "bx bx-desktop text-xl";
     }
     function updateIcon(btn) {
