@@ -1,5 +1,40 @@
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
+<style>
+  /* Light/dark theme variables with OS preference fallback */
+  :root{
+    --site-bg: var(--color-gray-100);
+    --site-text: var(--color-gray-700);
+    --site-muted: var(--color-gray-500);
+    --card-bg: #ffffff;
+    --link-color: #3b82f6; /* blue-500 */
+    --overlay-bg: rgba(0,0,0,0.6);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --site-bg: #0b1220;
+      --site-text: #c9d6e3;
+      --site-muted: #98a7b5;
+      --card-bg: #07101a;
+      --link-color: #60a5fa;
+      --overlay-bg: rgba(255,255,255,0.03);
+    }
+    meta[name="theme-color"]{ color-scheme: dark; }
+  }
+
+  html,body{ background-color:var(--site-bg); color:var(--site-text); }
+  .bg-gray-50, .bg-white, .bg-gray-200{ background-color:var(--card-bg) !important; }
+  .text-gray-700{ color:var(--site-text) !important; }
+  .text-gray-500{ color:var(--site-muted) !important; }
+  .text-blue-500{ color:var(--link-color) !important; }
+
+  /* Ensure mobile overlay uses theme-aware overlay color */
+  .fixed.inset-0.min-h-screen.bg-black{ background-color:var(--overlay-bg) !important; }
+
+  /* Slightly dim the panel border in dark mode */
+  .absolute.min-h-screen.bg-gray-200{ box-shadow: 0 0 0 1px rgba(0,0,0,0.04) inset; }
+</style>
+
 {{ $styles := resources.Get "css/styles.scss" }}
 {{ if $styles }}
   {{ if hugo.IsServer }}
