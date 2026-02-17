@@ -124,6 +124,19 @@
     background-color: var(--card-bg) !important;
   }
 
+  /* Ensure outlined headings render transparent fill and use theme-aware stroke colors.
+     This keeps the 'font-outline-*' effect consistent in dark and light modes. */
+  .font-outline-2 {
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    -webkit-text-stroke: 2px var(--color-gray-600) !important;
+  }
+  .font-outline-3 {
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    -webkit-text-stroke: 3px var(--color-gray-600) !important;
+  }
+
   /* Dark-mode: make buttons that use `hover:bg-gray-600` lighten on hover
      so text remains readable and the hover feels like a lighter highlight. */
   html.dark .hover\:bg-gray-600:hover,
