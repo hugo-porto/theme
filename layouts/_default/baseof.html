@@ -6,7 +6,7 @@
     {{ partial "head.html" . }}
   </head>
   <body :class="{ 'overflow-hidden max-h-screen': mobileMenu }" class="relative" x-data="{ mobileMenu: false }">
-    <div id="main" class="relative max-w-screen-xl mx-auto px-5">
+    <div id="main" class="relative max-w-screen-xl mx-auto px-2 md:px-5">
       {{ partial "navbar.html" . }}
       <main>
         {{ block "main" . }}{{ end }}
