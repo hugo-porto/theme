@@ -88,8 +88,8 @@
     --site-muted: #98a7b5;
     --card-bg: #07101a;
     --link-color: #60a5fa;
-    --overlay-bg: rgba(255,255,255,0.03);
-    --divider: rgba(255,255,255,0.12);
+    --overlay-bg: rgba(255, 255, 255, 0.03);
+    --divider: rgba(255, 255, 255, 0.12);
   }
 
   /* Support data-theme attribute as an alternative hook (stronger targeting) */
@@ -99,8 +99,8 @@
     --site-muted: #98a7b5 !important;
     --card-bg: #07101a !important;
     --link-color: #60a5fa !important;
-    --overlay-bg: rgba(255,255,255,0.03) !important;
-    --divider: rgba(255,255,255,0.12) !important;
+    --overlay-bg: rgba(255, 255, 255, 0.03) !important;
+    --divider: rgba(255, 255, 255, 0.12) !important;
   }
 
   html[data-theme="light"] {
@@ -109,44 +109,62 @@
     --site-muted: var(--color-gray-500) !important;
     --card-bg: #ffffff !important;
     --link-color: #3b82f6 !important;
-    --overlay-bg: rgba(0,0,0,0.6) !important;
-    --divider: rgba(0,0,0,0.08) !important;
+    --overlay-bg: rgba(0, 0, 0, 0.6) !important;
+    --divider: rgba(0, 0, 0, 0.08) !important;
   }
 
   /* Force some high-level properties when explicitly dark/light so they override compiled rules */
-  html.dark body, html[data-theme="dark"] body, html[data-theme="light"] body {
+  html.dark body,
+  html[data-theme="dark"] body,
+  html[data-theme="light"] body {
     background-color: var(--site-bg) !important;
     color: var(--site-text) !important;
   }
-  html.dark .bg-white, html[data-theme="dark"] .bg-white, html[data-theme="light"] .bg-white { background-color: var(--card-bg) !important; }
+  html.dark .bg-white,
+  html[data-theme="dark"] .bg-white,
+  html[data-theme="light"] .bg-white {
+    background-color: var(--card-bg) !important;
+  }
 </style>
 
 <script>
-  (function(){
-    var KEY = 'theme'; // values: 'light'|'dark'|'system'
-    function systemPref(){ return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-    function apply(mode){
-      if(mode === 'dark'){
-        document.documentElement.classList.add('dark');
-        document.documentElement.setAttribute('data-theme','dark');
-      } else if(mode === 'light'){
-        document.documentElement.classList.remove('dark');
-        document.documentElement.setAttribute('data-theme','light');
+  (function () {
+    var KEY = "theme"; // values: 'light'|'dark'|'system'
+    function systemPref() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    function apply(mode) {
+      if (mode === "dark") {
+        document.documentElement.classList.add("dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else if (mode === "light") {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.setAttribute("data-theme", "light");
       } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.removeAttribute('data-theme');
+        document.documentElement.classList.remove("dark");
+        document.documentElement.removeAttribute("data-theme");
       }
       // when mode === 'system', we remove the class and let prefers-color-scheme handle it
-      try{
+      try {
         // debug removed
-      } catch(e){}
+      } catch (e) {}
     }
-    function getStored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
-    function setStored(v){ try { localStorage.setItem(KEY, v); } catch(e){} }
+    function getStored() {
+      try {
+        return localStorage.getItem(KEY);
+      } catch (e) {
+        return null;
+      }
+    }
+    function setStored(v) {
+      try {
+        localStorage.setItem(KEY, v);
+      } catch (e) {}
+    }
 
     var stored = getStored();
-    var initial = stored || 'system';
-    if(initial === 'system') {
+    var initial = stored || "system";
+    if (initial === "system") {
       // apply current system
       apply(systemPref());
     } else {
@@ -155,28 +173,31 @@
 
     // expose helper
     window.__theme = initial;
-    window.__getPreferredTheme = function(){ return window.__theme || 'system'; };
-    window.__setPreferredTheme = function(mode){
-      if(!mode) return;
-      if(mode !== 'light' && mode !== 'dark' && mode !== 'system') return;
+    window.__getPreferredTheme = function () {
+      return window.__theme || "system";
+    };
+    window.__setPreferredTheme = function (mode) {
+      if (!mode) return;
+      if (mode !== "light" && mode !== "dark" && mode !== "system") return;
       setStored(mode);
       window.__theme = mode;
-      if(mode === 'system') apply(systemPref()); else apply(mode);
-      window.dispatchEvent(new Event('theme-changed'));
+      if (mode === "system") apply(systemPref());
+      else apply(mode);
+      window.dispatchEvent(new Event("theme-changed"));
     };
 
     // helper to cycle through values: system -> dark -> light -> system
-    window.__cyclePreferredTheme = function(){
-      var cur = window.__theme || getStored() || 'system';
-      var next = cur === 'system' ? 'dark' : (cur === 'dark' ? 'light' : 'system');
+    window.__cyclePreferredTheme = function () {
+      var cur = window.__theme || getStored() || "system";
+      var next = cur === "system" ? "dark" : cur === "dark" ? "light" : "system";
       window.__setPreferredTheme(next);
       return next;
     };
 
     // Init: listen to system changes when user selected 'system'
-    if(window.matchMedia){
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){
-        if((window.__theme || getStored() || 'system') === 'system') apply(systemPref());
+    if (window.matchMedia) {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+        if ((window.__theme || getStored() || "system") === "system") apply(systemPref());
       });
     }
   })();

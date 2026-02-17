@@ -78,7 +78,12 @@
       {{ with site.Data.navbar.themeToggle }}
         {{ if .enabled }}
           <li class="px-3 flex items-center">
-            <button id="theme-toggle-desktop" type="button" aria-label="Toggle theme" class="p-2 rounded flex items-center justify-center ml-3" onclick="window.__cyclePreferredTheme()">
+            <button
+              id="theme-toggle-desktop"
+              type="button"
+              aria-label="Toggle theme"
+              class="p-2 rounded flex items-center justify-center ml-3"
+              onclick="window.__cyclePreferredTheme()">
               <i class="bx bx-desktop text-xl"></i>
             </button>
           </li>
@@ -95,57 +100,69 @@
 </div>
 
 <script>
-  (function(){
-    function iconFor(mode){
-      if(mode === 'dark') return 'bx bx-sun text-xl';
-      if(mode === 'light') return 'bx bx-moon text-xl';
-      return 'bx bx-desktop text-xl';
+  (function () {
+    function iconFor(mode) {
+      if (mode === "dark") return "bx bx-sun text-xl";
+      if (mode === "light") return "bx bx-moon text-xl";
+      return "bx bx-desktop text-xl";
     }
-    function updateIcon(btn){
-      if(!btn) return;
-      var icon = btn.querySelector('i');
-      var mode = window.__getPreferredTheme ? window.__getPreferredTheme() : (window.__theme || 'system');
-      if(icon) {
+    function updateIcon(btn) {
+      if (!btn) return;
+      var icon = btn.querySelector("i");
+      var mode = window.__getPreferredTheme ? window.__getPreferredTheme() : window.__theme || "system";
+      if (icon) {
         icon.className = iconFor(mode);
       }
     }
-    function nextMode(mode){
-      return mode === 'system' ? 'dark' : (mode === 'dark' ? 'light' : 'system');
+    function nextMode(mode) {
+      return mode === "system" ? "dark" : mode === "dark" ? "light" : "system";
     }
-    function labelForNext(mode){
+    function labelForNext(mode) {
       var next = nextMode(mode);
-      if(next === 'dark') return 'Switch to Dark';
-      if(next === 'light') return 'Switch to Light';
-      return 'Switch to System';
+      if (next === "dark") return "Switch to Dark";
+      if (next === "light") return "Switch to Light";
+      return "Switch to System";
     }
-    function attach(btn){
-      if(!btn) return;
-      if(btn.__themeAttached) return; // guard against double-attaching
+    function attach(btn) {
+      if (!btn) return;
+      if (btn.__themeAttached) return; // guard against double-attaching
       btn.__themeAttached = true;
-      btn.addEventListener('click', function(e){ if(e && e.preventDefault) e.preventDefault(); var next = window.__cyclePreferredTheme(); updateAllIcons(); });
+      btn.addEventListener("click", function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        var next = window.__cyclePreferredTheme();
+        updateAllIcons();
+      });
       updateIcon(btn);
     }
-    function updateAllIcons(){
+    function updateAllIcons() {
       // Attach only once (attach has internal guard), then update icons
-      var d = document.getElementById('theme-toggle-desktop'); if(d) attach(d); if(d) updateIcon(d);
-      var m = document.getElementById('theme-toggle-mobile'); if(m) attach(m); 
-      if(m){
+      var d = document.getElementById("theme-toggle-desktop");
+      if (d) attach(d);
+      if (d) updateIcon(d);
+      var m = document.getElementById("theme-toggle-mobile");
+      if (m) attach(m);
+      if (m) {
         // mobile UI uses a label instead of an icon
-        var label = document.getElementById('theme-toggle-mobile-label');
-        var mode = window.__getPreferredTheme ? window.__getPreferredTheme() : (window.__theme || 'system');
-        if(label) label.textContent = labelForNext(mode);
+        var label = document.getElementById("theme-toggle-mobile-label");
+        var mode = window.__getPreferredTheme ? window.__getPreferredTheme() : window.__theme || "system";
+        if (label) label.textContent = labelForNext(mode);
       }
     }
     updateAllIcons();
     // If mobile toggle isn't in DOM yet (it's in baseof after this partial), poll briefly and attach when available
-    (function pollMobile(){
+    (function pollMobile() {
       var attempts = 0;
-      var t = setInterval(function(){
+      var t = setInterval(function () {
         attempts++;
-        if(document.getElementById('theme-toggle-mobile')){ clearInterval(t); updateAllIcons(); }
-        if(attempts > 20){ clearInterval(t); }
+        if (document.getElementById("theme-toggle-mobile")) {
+          clearInterval(t);
+          updateAllIcons();
+        }
+        if (attempts > 20) {
+          clearInterval(t);
+        }
       }, 150);
     })();
-    window.addEventListener('theme-changed', updateAllIcons);
+    window.addEventListener("theme-changed", updateAllIcons);
   })();
 </script>
