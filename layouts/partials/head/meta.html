@@ -1,19 +1,39 @@
-<meta property="og:title" content="Homepage | hugo-porto theme" />
-
-<meta property="og:locale" content="en_US" />
-
-<meta property="og:url" content="//" />
-
+{{- /* Title: prefer page title when present */ -}}
 <meta
-  name="description"
-  content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+  property="og:title"
+  content="{{ if .Title }}
+    {{ .Title }} | {{ .Site.Title }}
+  {{ else }}
+    {{ .Site.Title }}
+  {{ end }}
+  " />
 
-<meta name="theme-color" content="#5540af" />
+{{- /* Locale: prefer site language code */ -}}
+<meta property="og:locale" content="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en_US{{ end }}" />
 
-<meta property="og:site_name" content="hugo-porto theme" />
+{{- /* Canonical URL */ -}}
+{{- $url := .Permalink -}}
+{{- if not $url }}{{- $url = .Site.BaseURL -}}{{- end -}}
+<meta property="og:url" content="{{ $url }}" />
 
-<meta property="og:image" content="//assets/img/social.jpg" />
+{{- /* Description: page -> site -> fallback */ -}}
+{{- $desc := .Params.description -}}
+{{- if not $desc }}
+  {{- with .Summary }}{{- $desc = . -}}{{- else -}}{{- $desc = .Site.Params.description -}}{{- end -}}
+{{- end -}}
+{{- if $desc }}<meta name="description" content="{{ $desc | htmlEscape }}" />{{- end }}
+
+{{- /* Theme color */ -}}
+<meta name="theme-color" content="{{ with .Site.Params.themeColor }}{{ . }}{{ else }}#5540af{{ end }}" />
+
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+
+{{- /* Social image: prefer page param, then site param, then default */ -}}
+{{- $img := .Params.featuredImage -}}
+{{- if not $img }}
+  {{- with .Site.Params.social.image }}{{- $img = . -}}{{- else -}}{{- $img = "assets/img/social.jpg" -}}{{- end -}}
+{{- end -}}
+<meta property="og:image" content="{{ $img | absURL }}" />
 
 <meta name="twitter:card" content="summary_large_image" />
-
-<meta name="twitter:site" content="@tailwindmade" />
+<meta name="twitter:site" content="{{ with .Site.Params.twitter }}{{ . }}{{ else }}@tailwindmade{{ end }}" />

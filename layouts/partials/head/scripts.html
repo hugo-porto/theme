@@ -1,15 +1,17 @@
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{{- /* External libs: prefer CDN with SRI when available */ -}}
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" crossorigin="anonymous"></script>
 
-{{ $scripts := resources.Get "scripts.js" }}
-{{ if $scripts }}
-  {{ if hugo.IsServer }}
+{{- /* Theme scripts: build, minify and fingerprint for production; defer loading */ -}}
+{{- $scripts := resources.Get "scripts.js" -}}
+{{- if $scripts -}}
+  {{- if hugo.IsServer -}}
     <script src="{{ $scripts.RelPermalink }}" defer></script>
-  {{ else }}
-    {{ $scripts = $scripts | minify | fingerprint }}
+  {{- else -}}
+    {{- $built := $scripts | minify | fingerprint -}}
     <script
-      src="{{ $scripts.RelPermalink }}"
-      integrity="{{ $scripts.Data.Integrity }}"
+      src="{{ $built.RelPermalink }}"
+      integrity="{{ $built.Data.Integrity }}"
       crossorigin="anonymous"
       defer></script>
-  {{ end }}
-{{ end }}
+  {{- end -}}
+{{- end -}}

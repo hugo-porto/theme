@@ -227,18 +227,19 @@
   })();
 </script>
 
-{{ $styles := resources.Get "css/styles.scss" }}
-{{ if $styles }}
-  {{ if hugo.IsServer }}
-    {{ $styles = $styles | toCSS }}
-    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
-  {{ else }}
-    {{ $styles = $styles | toCSS | minify | fingerprint }}
+{{- /* Build theme styles from SCSS, minify and fingerprint for production */ -}}
+{{- $scss := resources.Get "css/styles.scss" -}}
+{{- if $scss -}}
+  {{- if hugo.IsServer -}}
+    {{- $css := $scss | toCSS -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen" />
+  {{- else -}}
+    {{- $css := $scss | toCSS | minify | fingerprint -}}
     <link
       rel="stylesheet"
-      href="{{ $styles.RelPermalink }}"
-      integrity="{{ $styles.Data.Integrity }}"
+      href="{{ $css.RelPermalink }}"
+      integrity="{{ $css.Data.Integrity }}"
       crossorigin="anonymous"
       media="screen" />
-  {{ end }}
-{{ end }}
+  {{- end -}}
+{{- end -}}

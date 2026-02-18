@@ -1,12 +1,15 @@
-{{ $favicon := "img/default-favicon.png" }}
-{{ if site.Params.favicon }}
-  {{ $favicon = site.Params.favicon }}
-{{ end }}
+{{- $default := "img/default-favicon.png" -}}
+{{- $favPath := $default -}}
+{{- with .Site.Params.favicon -}}{{- $favPath = . -}}{{- end -}}
 
-{{ $favicon = resources.Get $favicon }}
-{{ if ne $favicon.MediaType.SubType "svg" }}
-  {{ $favicon = $favicon.Resize "32x" }}
-{{ end }}
-
-
-<link rel="icon" href="{{ $favicon.RelPermalink }}" />
+{{- $res := resources.Get $favPath -}}
+{{- if $res -}}
+  {{- if eq $res.MediaType.SubType "svg" -}}
+    <link rel="icon" href="{{ $res.RelPermalink }}" />
+  {{- else -}}
+    {{- $ico := $res.Resize "32x" -}}
+    <link rel="icon" href="{{ $ico.RelPermalink }}" />
+  {{- end -}}
+{{- else -}}
+  <link rel="icon" href="{{ $favPath | relURL }}" />
+{{- end -}}

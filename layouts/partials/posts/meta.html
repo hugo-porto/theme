@@ -1,5 +1,5 @@
-{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-{{ $dateHuman := .Date | time.Format ":date_long" }}
+{{- $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" -}}
+{{- $dateHuman := .Date | time.Format ":date_long" -}}
 
 
 <div class="flex flex-wrap items-center">
@@ -16,9 +16,13 @@
   </div>
   <div class="flex flex-wrap items-center">
     <i class="bx bx-purchase-tag-alt text-gray-500 h-4 mr-1"></i>
-    {{ range index .Params "tags" }}
-      {{ $href := print (absURL "tags/") (urlize .) }}
-      <a class="text-blue-500 hover:underline text-sm mx-1 my-1" href="{{ $href }}" aria-label="{{ . }}">{{ . }}</a>
-    {{ end }}
+    {{ with .Params.tags }}
+      {{- range . -}}
+        {{- $tagPath := printf "tags/%s/" (urlize .) -}}
+        <a class="text-blue-500 hover:underline text-sm mx-1 my-1" href="{{ $tagPath | relURL }}" aria-label="{{ . }}">
+          {{ . }}
+        </a>
+      {{- end -}}
+    {{- end }}
   </div>
 </div>
