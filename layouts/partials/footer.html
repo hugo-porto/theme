@@ -1,9 +1,13 @@
 {{/* Default values */}}
-{{ $author := or site.Params.Author.name (or site.Author.name "John Doe") }}
+{{/* Resolve author from params or site author, handling string or map */}}
+{{ $author := "John Doe" }}
+{{ with .Site.Params.author }}
+  {{ with .name }}{{ $author = . }}{{ else }}{{ $author = . }}{{ end }}
+{{ end }}
 {{ $copyright := printf "© %d %s" now.Year $author }}
 
 {{/* Custom data from configuration file */}}
-{{ with site.Data.footer }}
+{{ with .Site.Data.footer }}
   {{ if .copyright }}{{ $copyright = .copyright }}{{ end }}
 {{ end }}
 
