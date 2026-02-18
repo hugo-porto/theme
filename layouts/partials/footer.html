@@ -1,15 +1,18 @@
-{{/* Default values */}}
-{{/* Resolve author from params or site author, handling string or map */}}
-{{ $author := "John Doe" }}
-{{ with .Site.Params.author }}
-  {{ with .name }}{{ $author = . }}{{ else }}{{ $author = . }}{{ end }}
-{{ end }}
-{{ $copyright := printf "© %d %s" now.Year $author }}
+{{/* Default and resolved author (params.author -> site.Author -> fallback) */}}
+{{- $defaultAuthor := "John Doe" -}}
+{{- $author := "" -}}
+{{- with .Site.Params.author -}}
+  {{- with .name -}}{{- $author = . -}}{{- else -}}{{- $author = . -}}{{- end -}}
+{{- end -}}
+{{- if eq $author "" -}}{{- $author = $defaultAuthor -}}{{- end -}}
+{{- $copyright := printf "© %d %s" now.Year $author -}}
 
-{{/* Custom data from configuration file */}}
-{{ with .Site.Data.footer }}
-  {{ if .copyright }}{{ $copyright = .copyright }}{{ end }}
-{{ end }}
+{{/* Prefer params.author; fall back to data/footer.copyright only when no author param */}}
+{{- with .Site.Data.footer -}}
+  {{- if and (not (isset .Site.Params "author")) .copyright -}}
+    {{- $copyright = .copyright -}}
+  {{- end -}}
+{{- end -}}
 
 {{ partial "footer/socials.html" }}
 
