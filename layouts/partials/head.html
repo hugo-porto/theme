@@ -1,15 +1,18 @@
 <meta charset="utf-8" />
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+{{/* Title: prefer site title on home or when page title absent */}}
+<title>{{ if or .IsHome (eq .Title "") }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
-<link rel="stylesheet" href="/css/tailwind.css" />
+{{/* Use relURL so assets honor `baseURL`/subfolder deployments */}}
+<link rel="stylesheet" href="{{ "css/tailwind.css" | relURL }}" />
 
-{{ partial "head/fonts.html" . }}
+{{/* Cache static head partials for performance */}}
+{{ partialCached "head/fonts.html" . }}
 {{ partial "head/meta.html" . }}
-{{ partial "head/favicon.html" . }}
-{{ partial "head/scripts.html" . }}
-{{ partial "head/styles.html" . }}
+{{ partialCached "head/favicon.html" . }}
+{{ partialCached "head/scripts.html" . }}
+{{ partialCached "head/styles.html" . }}
 
 {{ template "_internal/google_analytics.html" . }}

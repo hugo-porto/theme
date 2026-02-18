@@ -15,14 +15,18 @@
 }}
 
 {{/* Custom data from configuration file */}}
-{{ with site.Data.navbar }}
+{{ with .Site.Data.navbar }}
   {{ $menu = slice }}
   {{ $buttonEnabled = false }}
   {{ $themeToggleEnabled := false }}
   {{ if .menu }}{{ $menu = .menu }}{{ end }}
   {{ if .title }}{{ $title = .title }}{{ end }}
   {{ if .logo }}{{ $logo = .logo }}{{ end }}
-  {{ if .logoLink }}{{ $logoLink = .logoLink }}{{ else if .site.BaseURL }}{{ $logoLink = .site.BaseURL }}{{ end }}
+  {{ if .logoLink }}
+    {{ $logoLink = ( .logoLink | relURL ) }}
+  {{ else if .Site.BaseURL }}
+    {{ $logoLink = .Site.BaseURL }}
+  {{ end }}
   {{ if .button }}
     {{ if .button.enabled }}{{ $buttonEnabled = .button.enabled }}{{ end }}
     {{ if .button.text }}{{ $buttonText = .button.text }}{{ end }}
@@ -44,7 +48,7 @@
 
 <div class="flex items-center justify-between py-5">
   <div class="flex items-center">
-    <a href="{{ $logoLink }}">
+    <a href="{{ $logoLink | relURL }}">
       <img src="{{ $logo }}" class="py-5 w-10 lg:w-14 min-w-10" alt="{{ $title }}" title="{{ $title }}" />
     </a>
     <a href="{{ $logoLink }}">
